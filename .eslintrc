@@ -8,19 +8,20 @@
     "eslint:recommended",
     "plugin:react/recommended",
     "plugin:@typescript-eslint/eslint-recommended",
-    "plugin:prettier/recommended"
+    "plugin:prettier/recommended",
+    "plugin:@next/next/recommended"
   ],
+  "plugins": ["react", "@typescript-eslint", "import", "react-hooks"],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaFeatures": { "jsx": true },
     "ecmaVersion": 2018,
     "sourceType": "module"
   },
-  "plugins": ["react", "@typescript-eslint", "import", "react-hooks"],
   "rules": {
     "react/prop-types": "off",
     "react/react-in-jsx-scope": "off",
-    "no-restricted-imports": ["warn", { "patterns": ["../*"] }],
+    "no-restricted-imports": ["warn", { "patterns": ["../*", "./*"] }],
     "import/no-default-export": ["error"] ,
     "@typescript-eslint/no-unused-vars": [
       "warn",
