@@ -1,4 +1,4 @@
-FROM node:14-alpine AS deps
+FROM node:16-alpine AS deps
 
 WORKDIR /opt/app
 COPY package.json yarn.lock ./
@@ -8,7 +8,7 @@ RUN yarn install --frozen-lockfile
 # This is where because may be the case that you would try
 # to build the app based on some `X_TAG` in my case (Git commit hash)
 # but the code hasn't changed.
-FROM node:14-alpine AS builder
+FROM node:16-alpine AS builder
 
 ENV NODE_ENV=production
 WORKDIR /opt/app
@@ -17,7 +17,7 @@ COPY --from=deps /opt/app/node_modules ./node_modules
 RUN yarn build && rm -rf node_modules && yarn add next
 
 # Production image, copy all the files and run next
-FROM node:14-alpine AS runner
+FROM node:16-alpine AS runner
 
 ARG X_TAG
 WORKDIR /opt/app
