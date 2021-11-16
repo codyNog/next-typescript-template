@@ -6,7 +6,7 @@
       "  // id: string",
       "}",
       "",
-      "export const ${TM_DIRECTORY/^.+\\/(.*)$/$1/}: React.VFC<Props> = () => {",
+      "export const ${TM_DIRECTORY/^.+\\/(.*)$/$1/} = ({}: Props) => {",
       "  return ${3:(null$1)}",
       "}",
       ""
@@ -37,7 +37,6 @@
   "Storybook template": {
     "prefix": "storybook",
     "body": [
-      "import React from 'react'",
       "import { storiesOf } from '@storybook/react'",
       "",
       "import ${TM_DIRECTORY/^.+\\/(.*)$/$1/} from './'",

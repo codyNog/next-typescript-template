@@ -1,5 +1,5 @@
 import { Atom } from "~/components/atoms";
 
-export const Molecule: React.VFC = () => {
+export const Molecule = () => {
   return <Atom />;
 };

@@ -1,5 +1,5 @@
 import { Organism } from "~/components/organisms";
 
-export const Root: React.VFC = () => {
+export const Root = () => {
   return <Organism />;
 };
