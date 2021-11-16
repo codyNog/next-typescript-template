@@ -6,7 +6,7 @@
       "  // id: string",
       "}",
       "",
-      "export const ${TM_DIRECTORY/^.+\\/(.*)$/$1/}: React.FC<Props> = ({ children }) => {",
+      "export const ${TM_DIRECTORY/^.+\\/(.*)$/$1/}: React.VFC<Props> = () => {",
       "  return ${3:(null$1)}",
       "}",
       ""
