@@ -4,13 +4,8 @@ import "ress";
 
 export default class MyApp extends App {
   static async getStaticProps({ Component, ctx }) {
-    let pageProps = {};
-
-    if (Component.getInitialProps) {
-      pageProps = await Component.getStaticProps(ctx);
-    }
-
-    return { pageProps };
+    if (!Component.getInitialProps) return {};
+    return { pageProps: await Component.getStaticProps(ctx) };
   }
 
   render() {
