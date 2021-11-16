@@ -1,9 +1,4 @@
 import Document, { Head, Html, Main, NextScript } from "next/document";
-import styled from "@emotion/styled";
-
-const Body = styled.body({
-  margin: 0
-});
 
 export default class MyDocument extends Document {
   static async getInitialProps(ctx) {
@@ -15,10 +10,10 @@ export default class MyDocument extends Document {
     return (
       <Html>
         <Head></Head>
-        <Body>
+        <body>
           <Main />
           <NextScript />
-        </Body>
+        </body>
       </Html>
     );
   }
