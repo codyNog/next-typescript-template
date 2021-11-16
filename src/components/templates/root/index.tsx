@@ -1,5 +1,5 @@
 import { Organism } from "~/components/organisms";
 
-export const Root = () => {
+export const Root = (): JSX.Element => {
   return <Organism />;
 };

@@ -1,5 +1,5 @@
 import { Molecule } from "~/components/molecules";
 
-export const Organism = () => {
+export const Organism = (): JSX.Element => {
   return <Molecule />;
 };
