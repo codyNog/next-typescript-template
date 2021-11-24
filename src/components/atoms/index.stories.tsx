@@ -1,4 +1,4 @@
-import { storiesOf } from "@storybook/react";
 import { Atom } from "~/components/atoms";
+import { addComponent } from "~/libs/storybook";
 
-storiesOf("components", module).add("atoms", () => <Atom />);
+addComponent("atoms", <Atom />);
