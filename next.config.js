@@ -4,5 +4,5 @@ module.exports = {
       config.resolve.alias["@sentry/node"] = "@sentry/browser";
     }
     return config;
-  }
+  },
 };
