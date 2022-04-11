@@ -11,7 +11,7 @@ export const initSentry = () => {
       beforeSend(event, hint) {
         if (hint && String(hint.originalException).includes("401")) return null;
         return event;
-      }
+      },
     });
   }
 };
