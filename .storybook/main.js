@@ -1,10 +1,21 @@
-const path = require("path");
+const { resolve } = require("path");
+const { mergeConfig } = require("vite");
 
 module.exports = {
-  stories: ["../src/**/*.stories.mdx", "../src/**/*.stories.@(js|jsx|ts|tsx)"],
-  addons: ["@storybook/addon-links", "@storybook/addon-essentials"],
-  webpackFinal: (config) => {
-    config.resolve.alias["~"] = path.join(__dirname, "../src/");
-    return config;
-  }
+  stories: ["../src/**/*.stories.@(ts|tsx)"],
+  addons: [
+    "@storybook/addon-links",
+    "@storybook/addon-essentials",
+    "@storybook/addon-interactions",
+  ],
+  core: {
+    builder: "@storybook/builder-vite",
+  },
+  async viteFinal(config) {
+    return mergeConfig(config, {
+      resolve: {
+        alias: { "~": resolve(__dirname, "../src") },
+      },
+    });
+  },
 };

@@ -8,21 +8,37 @@
     "eslint:recommended",
     "plugin:react/recommended",
     "plugin:@typescript-eslint/eslint-recommended",
-    "plugin:prettier/recommended",
     "plugin:@next/next/recommended"
   ],
-  "plugins": ["react", "@typescript-eslint", "import", "react-hooks"],
+  "plugins": [
+    "react",
+    "@typescript-eslint",
+    "import",
+    "react-hooks"
+  ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
-    "ecmaFeatures": { "jsx": true },
+    "ecmaFeatures": {
+      "jsx": true
+    },
     "ecmaVersion": 2018,
     "sourceType": "module"
   },
   "rules": {
     "react/prop-types": "off",
     "react/react-in-jsx-scope": "off",
-    "no-restricted-imports": ["warn", { "patterns": ["../*", "./*"] }],
-    "import/no-default-export": ["error"] ,
+    "no-restricted-imports": [
+      "warn",
+      {
+        "patterns": [
+          "../*",
+          "./*"
+        ]
+      }
+    ],
+    "import/no-default-export": [
+      "error"
+    ],
     "@typescript-eslint/no-unused-vars": [
       "warn",
       {
@@ -33,7 +49,17 @@
   },
   "overrides": [
     {
-      "files": ["src/pages/**"],
+      "files": [
+        "src/pages/**"
+      ],
+      "rules": {
+        "import/no-default-export": "off"
+      }
+    },
+    {
+      "files": [
+        "src/**/*.stories.**"
+      ],
       "rules": {
         "import/no-default-export": "off"
       }

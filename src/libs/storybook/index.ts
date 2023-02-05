@@ -5,7 +5,7 @@ type ComponentType = "atoms" | "molecules" | "organisms";
 
 export const addComponent = (
   componentType: ComponentType,
-  component: StoryFnReactReturnType
+  component: StoryFnReactReturnType,
 ) => {
   storiesOf("components", module).add(componentType, () => component);
 };

@@ -45,5 +45,30 @@
       "  .add('${1:${TM_DIRECTORY/^.+\\/(.*)$/$1/}}', () => <${1:${TM_DIRECTORY/^.+\\/(.*)$/$1/}} />)"
     ],
     "description": "Storybook template"
+  },
+  "HooksTest template": {
+    "prefix": "hookstest",
+    "body": [
+      "if (process.env.NODE_ENV === 'test' && import.meta.vitest) {",
+      "  const { renderHook, waitFor } = await import('@testing-library/react');",
+      "  const { startTestServer } = await import('~/libs/msw/server');",
+      "  const { mock } = await import('~/mocks');",
+      "",
+      "  describe('useHoge', () => {",
+      "    it('初期状態', async () => {",
+      "      const { result } = renderHook(() => useClustersPage());",
+      "",
+      "      expect(result.current.clusters).toStrictEqual([]);",
+      "",
+      "      await waitFor(() => {",
+      "        expect(result.current.clusters).toStrictEqual(mock.cluster.clusters);",
+      "        expect(result.current.isLoading).toStrictEqual(false);",
+      "        expect(result.current.hasMore).toStrictEqual(false);",
+      "      });",
+      "    });",
+      "  });",
+      "}",
+      
+    ]
   }
 }
