@@ -1,7 +1,7 @@
-import { Root } from "~/components/templates/root";
+import { IndexPage } from "~/components/pages";
 
 const Component = () => {
-  return <Root />;
+  return <IndexPage />;
 };
 
 export default Component;
