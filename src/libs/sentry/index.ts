@@ -1,4 +1,4 @@
-import * as Sentry from "@sentry/node";
+import * as Sentry from "@sentry/nextjs";
 import { SENTRY_DSN, ENV } from "~/constants/env";
 import { ErrorInfo } from "react";
 
@@ -17,11 +17,11 @@ export const initSentry = () => {
 };
 
 // eslint-disable-next-line
-export const catchWithSentry = (error: Error, errorInfo: ErrorInfo | any) => {
+export const catchWithSentry = (error: Error, errorInfo: ErrorInfo) => {
   if (SENTRY_DSN) {
     Sentry.withScope((scope) => {
       Object.keys(errorInfo).forEach((key) => {
-        scope.setExtra(key, errorInfo[key]);
+        scope.setExtra(key, errorInfo.componentStack);
       });
       Sentry.captureException(error);
     });
