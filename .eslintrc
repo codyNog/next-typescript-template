@@ -50,20 +50,14 @@
   "overrides": [
     {
       "files": [
-        "src/pages/**"
+        "src/pages/**",
+        "src/**/*.stories.**",
+        "plopfile.js"
       ],
       "rules": {
         "import/no-default-export": "off"
       }
     },
-    {
-      "files": [
-        "src/**/*.stories.**"
-      ],
-      "rules": {
-        "import/no-default-export": "off"
-      }
-    }
   ],
   "settings": {
     "react": {

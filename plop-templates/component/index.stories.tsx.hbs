@@ -1,0 +1,12 @@
+import { ComponentMeta, ComponentStory } from "@storybook/react";
+import { {{pascalCase name}} as Component } from ".";
+import { within, userEvent } from "@storybook/testing-library";
+
+export default {
+title: "{{pascalCase name}}",
+component: Component,
+} as ComponentMeta<typeof Component>;
+
+    const Template: ComponentStory<typeof Component> = (args) => (
+        <Component {...args} />
+        );
