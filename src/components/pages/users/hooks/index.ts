@@ -1,14 +1,13 @@
 export const useUsersPage = () => {
-return {}
+  return {};
 };
 
 if (process.env.NODE_ENV === "test" && import.meta.vitest) {
-const { renderHook } = await import("@testing-library/react");
+  // const { renderHook } = await import("@testing-library/react");
 
-describe("useUsersPage", () => {
-it("初期状態", async () => {
-const { result } = renderHook(() => useUsersPage());
-
-});
-});
+  describe("useUsersPage", () => {
+    it("初期状態", async () => {
+      //const { result } = renderHook(() => useUsersPage());
+    });
+  });
 }

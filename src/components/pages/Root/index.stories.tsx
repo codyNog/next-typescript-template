@@ -1,6 +1,5 @@
-import { ComponentMeta, ComponentStory } from "@storybook/react";
+import { ComponentMeta } from "@storybook/react";
 import { RootPage as Component } from ".";
-import { within, userEvent } from "@storybook/testing-library";
 
 export default {
   title: "RootPage",
