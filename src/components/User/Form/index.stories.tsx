@@ -1,5 +1,5 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
-import { UserForm as Component } from "~/components/organisms/User/Form";
+import { UserForm as Component } from "~/components/User/Form";
 import { within, userEvent } from "@storybook/testing-library";
 
 export default {

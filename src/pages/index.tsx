@@ -1,7 +1,3 @@
-import { IndexPage } from "~/components/pages";
+import { RootPage } from "~/components/pages/Root";
 
-const Component = () => {
-  return <IndexPage />;
-};
-
-export default Component;
+export default RootPage;

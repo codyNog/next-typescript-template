@@ -1,5 +1,3 @@
-import { UserPage } from "~/components/pages/users/id";
+import { UserIdPage } from "~/components/pages/UserId";
 
-const Component = UserPage;
-
-export default Component;
+export default UserIdPage;

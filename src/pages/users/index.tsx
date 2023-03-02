@@ -1,7 +1,3 @@
-import { UsersPage } from "~/components/pages/users";
+import { UsersPage } from "~/components/pages/Users";
 
-const Component = () => {
-  return <UsersPage />;
-};
-
-export default Component;
+export default UsersPage;

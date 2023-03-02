@@ -1,4 +1,4 @@
-import { useUserForm } from "~/components/organisms/User/Form/hooks";
+import { useUserForm } from "~/components/User/Form/hooks";
 import { User } from "~/types/User";
 
 type Props = {

@@ -1,7 +1,7 @@
 import { Suspense } from "react";
 import { GetUsersParameter, User } from "~/types/User";
 import { useForm } from "react-hook-form";
-import { useUserList } from "~/components/organisms/User/List/hooks";
+import { useUserList } from "~/components/User/List/hooks";
 import { useUser } from "~/store/User";
 
 type ItemProps = { user: User };

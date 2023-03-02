@@ -1,0 +1,8 @@
+import { ComponentMeta } from "@storybook/react";
+import { {{pascalCase name}}Page as Component } from "~/components/pages/{{name}}";
+import { within, userEvent } from "@storybook/testing-library";
+
+export default {
+title: "{{pascalCase name}}Page",
+component: Component,
+} as ComponentMeta<typeof Component>;
