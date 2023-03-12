@@ -54,9 +54,9 @@
       "  const { startTestServer } = await import('~/libs/msw/server');",
       "  const { mock } = await import('~/mocks');",
       "",
-      "  describe('useHoge', () => {",
+      "  describe('use${TM_DIRECTORY/^.+\\/(.*)$/$1/}', () => {",
       "    it('初期状態', async () => {",
-      "      const { result } = renderHook(() => useClustersPage());",
+      "      const { result } = renderHook(() => use${TM_DIRECTORY/^.+\\/(.*)$/$1/}());",
       "",
       "      expect(result.current.clusters).toStrictEqual([]);",
       "",
@@ -68,7 +68,6 @@
       "    });",
       "  });",
       "}",
-      
     ]
   }
 }

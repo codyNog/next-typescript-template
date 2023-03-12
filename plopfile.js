@@ -1,4 +1,4 @@
-export default function (plop) {
+module.exports =  function (plop) {
 	// controller generator
     plop.setGenerator('component', {
         description: 'react component',

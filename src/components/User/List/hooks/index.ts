@@ -1,8 +1,7 @@
-import { useState } from "react";
-import { GetUsersParameter } from "~/types/User";
+import { useUser } from "~/store/User";
 
 export const useUserList = () => {
-  const [parameter, setParameter] = useState<GetUsersParameter>({ name: "" });
+  const { getUsers } = useUser();
 
-  return { parameter, setParameter };
+  return { getUsers };
 };

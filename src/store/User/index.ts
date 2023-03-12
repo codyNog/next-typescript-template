@@ -1,11 +1,12 @@
 import { atom, useRecoilState } from "recoil";
 import { GetUsersParameter, User } from "~/types/User";
-import useSWR from "swr";
+
 import {
   createUser as create,
   getUsers as getMany,
   updateUser as update,
 } from "~/api/User";
+import { use } from "~/libs/hooks";
 
 const getUsersParameterAtom = atom<GetUsersParameter>({
   key: "getUUsersParameter",
@@ -20,9 +21,7 @@ export const useUser = () => {
   const createUser = create;
 
   const getUsers = (parameter: GetUsersParameter) =>
-    useSWR<User[]>("users", () => getMany(parameter), {
-      suspense: true,
-    });
+    use<User[]>(getMany(parameter), ["getUsers", String(parameter)]);
 
   const updateUser = update;
 

@@ -2,7 +2,7 @@ import { ComponentMeta } from "@storybook/react";
 import { RootPage as Component } from ".";
 
 export default {
-  title: "RootPage",
+  title: "Page/Root",
   component: Component,
 } as ComponentMeta<typeof Component>;
 
