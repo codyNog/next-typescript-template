@@ -12,7 +12,6 @@
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.43.5",
     "recoil": "^0.7.7",
-    "ress": "^5.0.2",
     "zod": "^3.21.4"
   },
   "scripts": {
@@ -20,15 +19,16 @@
     "build": "next build",
     "start": "next start",
     "export": "next export",
-    "generate": "pnpm build && pnpm export",
-    "server": "pnpm start",
+    "generate": "npm run build && npm run export",
+    "server": "npm run start",
     "lint": "eslint --max-warnings=0 '**/*.tsx' '**/*.ts'",
     "test": "vitest run",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "format": "rome format . --write",
     "plop": "plop",
-    "e2e": "playwright test"
+    "e2e": "playwright test",
+    "depcheck": "depcheck"
   },
   "devDependencies": {
     "@next/eslint-plugin-next": "^13.2.4",
@@ -46,19 +46,17 @@
     "@types/react": "^18.0.28",
     "@typescript-eslint/eslint-plugin": "^5.54.1",
     "@typescript-eslint/parser": "^5.54.1",
-    "@vitejs/plugin-react": "^3.1.0",
+    "depcheck": "^1.4.3",
     "eslint": "^8.36.0",
     "eslint-config-next": "^13.2.4",
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-hooks": "^4.6.0",
-    "hygen": "^6.2.11",
     "jsdom": "^21.1.0",
     "plop": "^3.1.2",
     "rome": "^11.0.0",
     "storycap": "^4.0.0",
     "typescript": "^4.9.5",
-    "vite-tsconfig-paths": "^4.0.5",
     "vitest": "^0.29.2"
   },
   "volta": {
