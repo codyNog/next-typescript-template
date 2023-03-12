@@ -16,7 +16,6 @@ export const initSentry = () => {
   }
 };
 
-// eslint-disable-next-line
 export const catchWithSentry = (error: Error, errorInfo: ErrorInfo) => {
   if (SENTRY_DSN) {
     Sentry.withScope((scope) => {

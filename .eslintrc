@@ -52,6 +52,7 @@
       "files": [
         "src/pages/**",
         "src/**/*.stories.**",
+        "*.config.ts",
         "plopfile.js"
       ],
       "rules": {

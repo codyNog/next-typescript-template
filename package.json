@@ -27,10 +27,12 @@
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "format": "rome format . --write",
-    "plop": "plop"
+    "plop": "plop",
+    "e2e": "playwright test"
   },
   "devDependencies": {
     "@next/eslint-plugin-next": "^13.2.4",
+    "@playwright/test": "^1.31.2",
     "@storybook/addon-actions": "^6.5.16",
     "@storybook/addon-essentials": "^6.5.16",
     "@storybook/addon-interactions": "^6.5.16",
