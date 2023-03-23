@@ -8,11 +8,17 @@ import {
 } from "~/api/User";
 import { use } from "~/libs/hooks";
 
+/**
+ * User 一覧取得の Global なパラメータ
+ **/
 const getUsersParameterAtom = atom<GetUsersParameter>({
   key: "getUUsersParameter",
   default: { name: "" },
 });
 
+/**
+ * User に関わる Store を集約した Custom Hooks
+ **/
 export const useUser = () => {
   const [getUsersParameter, setGetUsersParameter] = useRecoilState(
     getUsersParameterAtom,

@@ -5,6 +5,10 @@ type Props = {
   onSubmit: (user: User) => void;
 };
 
+/**
+ * @prop onSubmit - submitしたときのハンドラー
+ * @returns ユーザー情報を送信するフォーム
+ **/
 export const UserForm = ({ onSubmit }: Props): JSX.Element => {
   const { register, handleSubmit } = useUserForm();
 

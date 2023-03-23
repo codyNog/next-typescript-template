@@ -15,6 +15,11 @@ const Item = ({ user }: ItemProps) => {
 
 type Props = { parameter: GetUsersParameter };
 
+/**
+ * @remark suspendable
+ * @prop parameter - 渡されたパラメータに従って User[] が取得される
+ * @return User の配列を取得、表示する
+ **/
 export const UserList = ({ parameter }: Props): JSX.Element => {
   const { getUsers } = useUserList();
   const users = getUsers(parameter);

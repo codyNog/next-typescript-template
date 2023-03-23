@@ -3,6 +3,10 @@ import { useGetUsersParameterForm } from "~/components/User/GetUsersParameterFor
 
 type Props = { onSubmit: (parameter: GetUsersParameter) => void };
 
+/**
+ * @prop onSubmit - submit 時のハンドラー
+ * @returns GetUsersParameter を組み立てるフォーム
+ **/
 export const GetUsersParameterForm = ({ onSubmit }: Props) => {
   const { register, handleSubmit } = useGetUsersParameterForm();
 

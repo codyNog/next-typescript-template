@@ -2,6 +2,9 @@ import * as Sentry from "@sentry/nextjs";
 import { SENTRY_DSN, ENV } from "~/constants/env";
 import { ErrorInfo } from "react";
 
+/**
+ * Sentry の初期化
+ **/
 export const initSentry = () => {
   if (SENTRY_DSN) {
     Sentry.init({
@@ -15,7 +18,9 @@ export const initSentry = () => {
     });
   }
 };
-
+/**
+ * Sentry によるエラーキャッチ
+ **/
 export const catchWithSentry = (error: Error, errorInfo: ErrorInfo) => {
   if (SENTRY_DSN) {
     Sentry.withScope((scope) => {
@@ -26,7 +31,9 @@ export const catchWithSentry = (error: Error, errorInfo: ErrorInfo) => {
     });
   }
 };
-
+/**
+ * Sentry の Configuration
+ **/
 export const sentryConfig = (uid: string, name: string, loginId: string) => {
   Sentry.configureScope((scope) => {
     scope.setUser({ id: uid, username: name, email: loginId });

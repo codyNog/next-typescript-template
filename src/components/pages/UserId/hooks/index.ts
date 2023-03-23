@@ -1,5 +1,8 @@
 import { updateUser } from "~/api/User";
 
+/**
+ * UserIdPage の Custom Hooks
+ **/
 export const useUserIdPage = () => {
   const onSubmit = updateUser;
 

@@ -1,5 +1,8 @@
 import { createUser } from "~/api/User";
 
+/**
+ * UserNewPage の Custom Hooks
+ **/
 export const useUserNewPage = () => {
   const onSubmit = createUser;
 
