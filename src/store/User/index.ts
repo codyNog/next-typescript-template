@@ -1,6 +1,5 @@
 import { atom, useRecoilState } from "recoil";
 import { GetUsersParameter, User } from "~/types/User";
-
 import {
   createUser as create,
   getUsers as getMany,
@@ -12,7 +11,7 @@ import { use } from "~/libs/hooks";
  * User 一覧取得の Global なパラメータ
  **/
 const getUsersParameterAtom = atom<GetUsersParameter>({
-  key: "getUUsersParameter",
+  key: "getUsersParameter",
   default: { name: "" },
 });
 
@@ -26,6 +25,10 @@ export const useUser = () => {
 
   const createUser = create;
 
+  /**
+   * @param parameter - User 一覧取得の parameter
+   * @returns User[]
+   **/
   const getUsers = (parameter: GetUsersParameter) =>
     use<User[]>(getMany(parameter), ["getUsers", String(parameter)]);
 

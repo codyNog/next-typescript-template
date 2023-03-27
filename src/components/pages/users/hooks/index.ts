@@ -3,6 +3,9 @@ import { GetUsersParameter } from "~/types/User";
 
 const defaultValues: GetUsersParameter = { name: "" };
 
+/**
+ * UsersPage の Custom Hooks
+ **/
 export const useUsersPage = () => {
   const [parameter, setParameter] = useState<GetUsersParameter>(defaultValues);
 

@@ -1,9 +1,10 @@
-import { createUser } from "~/api/User";
+import { useUser } from "~/store/User";
 
 /**
  * UserNewPage の Custom Hooks
  **/
 export const useUserNewPage = () => {
+  const { createUser } = useUser();
   const onSubmit = createUser;
 
   return { onSubmit };

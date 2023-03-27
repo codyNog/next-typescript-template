@@ -1,5 +1,7 @@
 import { GetUsersParameter, User } from "~/types/User";
 
+const mockUser: User = { id: "foo", name: "bar", age: 20 };
+
 /**
  * User 一件作成
  * @returns 新規作成 User
@@ -13,7 +15,7 @@ const createUser = async (user: User): Promise<User> => {
  **/
 const getUsers = async (parameter: GetUsersParameter): Promise<User[]> => {
   console.log(parameter);
-  return [{ id: "foo", name: "bar", age: 20 }];
+  return [mockUser];
 };
 /**
  * User 一件更新
