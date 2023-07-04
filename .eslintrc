@@ -51,6 +51,7 @@
     {
       "files": [
         "src/pages/**",
+        "src/components/pages/**",
         "src/**/*.stories.**",
         "*.config.ts",
         "plopfile.js"

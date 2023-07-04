@@ -1,9 +1,20 @@
-import { ComponentMeta } from "@storybook/react";
-import { RootPage as Component } from ".";
+import type { Meta, StoryObj } from '@storybook/react';
+import Component from '.';
+import { within, userEvent } from '@storybook/testing-library';
 
-export default {
-  title: "Page/Root",
+const meta: Meta<typeof Component> = {
+  title: 'RootPage',
   component: Component,
-} as ComponentMeta<typeof Component>;
+}
 
-export const Page = Component.bind({});
+export default meta;
+
+type Story = StoryObj<typeof Component>;
+
+export const FirstStory: Story = {
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    userEvent.type(canvas.getByTestId('an-element'), 'example-value');
+  },
+}

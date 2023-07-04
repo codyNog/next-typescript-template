@@ -23,8 +23,8 @@
     "server": "npm run start",
     "lint": "eslint --max-warnings=0 '**/*.tsx' '**/*.ts'",
     "test": "vitest run",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build",
     "format": "rome format . --write",
     "plop": "plop",
     "e2e": "playwright test",
@@ -33,13 +33,14 @@
   "devDependencies": {
     "@next/eslint-plugin-next": "^13.3.0",
     "@playwright/test": "^1.32.2",
-    "@storybook/addon-actions": "^7.0.2",
-    "@storybook/addon-essentials": "^7.0.2",
-    "@storybook/addon-interactions": "^7.0.2",
-    "@storybook/addon-links": "^7.0.2",
-    "@storybook/builder-vite": "^7.0.2",
-    "@storybook/react": "^7.0.2",
-    "@storybook/testing-library": "^0.1.0",
+    "@storybook/addon-actions": "^7.0.25",
+    "@storybook/addon-essentials": "^7.0.25",
+    "@storybook/addon-interactions": "^7.0.25",
+    "@storybook/addon-links": "^7.0.25",
+    "@storybook/blocks": "^7.0.25",
+    "@storybook/react": "^7.0.25",
+    "@storybook/react-vite": "^7.0.25",
+    "@storybook/testing-library": "^0.2.0",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^14.0.0",
     "@types/node": "^18.15.11",
@@ -52,14 +53,21 @@
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-storybook": "^0.6.12",
     "jsdom": "^21.1.1",
     "plop": "^3.1.2",
     "rome": "^12.0.0",
+    "storybook": "^7.0.25",
     "storycap": "^4.0.0",
     "typescript": "^5.0.4",
     "vitest": "^0.29.8"
   },
   "volta": {
     "node": "18.13.0"
+  },
+  "eslintConfig": {
+    "extends": [
+      "plugin:storybook/recommended"
+    ]
   }
 }

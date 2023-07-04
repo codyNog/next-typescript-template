@@ -1,3 +1,5 @@
-export const RootPage = (): JSX.Element => {
-  return <div>root</div>;
+const RootPage = (): JSX.Element => {
+  return <div>rootpage</div>;
 };
+
+export default RootPage;
