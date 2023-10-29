@@ -1,6 +1,6 @@
 /// <reference types="vitest" />
 import { defineConfig } from "vitest/config";
-import { fileURLToPath } from "url";
+import { fileURLToPath } from "node:url";
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -11,5 +11,5 @@ export default defineConfig({
     includeSource: ["src/**/*.{js,ts,tsx}"],
     setupFiles: "./vitest.setup.ts",
   },
-  resolve: { alias: { "~": fileURLToPath(new URL("./src", import.meta.url)) } },
+  resolve: { alias: { "~": fileURLToPath(new URL("/src", import.meta.url)) } },
 });

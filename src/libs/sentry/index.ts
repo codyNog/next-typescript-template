@@ -12,6 +12,7 @@ export const initSentry = () => {
       environment: ENV,
       ignoreErrors: ["ResizeObserver loop limit exceeded"],
       beforeSend(event, hint) {
+        // eslint-disable-next-line unicorn/no-null
         if (hint && String(hint.originalException).includes("401")) return null;
         return event;
       },
@@ -24,9 +25,9 @@ export const initSentry = () => {
 export const catchWithSentry = (error: Error, errorInfo: ErrorInfo) => {
   if (SENTRY_DSN) {
     Sentry.withScope((scope) => {
-      Object.keys(errorInfo).forEach((key) => {
+      for (const key of Object.keys(errorInfo)) {
         scope.setExtra(key, errorInfo.componentStack);
-      });
+      }
       Sentry.captureException(error);
     });
   }

@@ -1,0 +1,11 @@
+import { composeStories } from "@storybook/testing-react";
+import { render } from "@testing-library/react";
+import * as Story from "~/components/{{pascalCase name}}/index.stories";
+
+describe("{{pascalCase name}}", () => {
+  const { FirstStory } = composeStories(Story);
+  it("正常にレンダリングされる", () => {
+    const { container } = render(<FirstStory />);
+    expect(container).toMatchSnapshot();
+  });
+});

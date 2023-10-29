@@ -1,8 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
 
-export const use = <T,>(
+export const use = <T>(
   callback: Promise<T>,
-  queryKey: string[],
+  queryKey: string[]
 ): T | undefined => {
   const { data } = useQuery({
     queryKey,

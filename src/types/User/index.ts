@@ -5,6 +5,7 @@ export const userSchema = z.object({
   name: z.string(),
   age: z.number(),
 });
+
 /**
  * User 概念の型定義
  **/
@@ -14,6 +15,7 @@ export const getUsersParameterSchema = z.object({
   name: z.string().optional(),
   maxAge: z.number().optional(),
 });
+
 /**
  * User 一覧を取得するためのパラメータ
  **/

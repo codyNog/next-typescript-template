@@ -8,14 +8,10 @@
     "eslint:recommended",
     "plugin:react/recommended",
     "plugin:@typescript-eslint/eslint-recommended",
-    "plugin:@next/next/recommended"
+    "plugin:@next/next/recommended",
+    "plugin:unicorn/recommended"
   ],
-  "plugins": [
-    "react",
-    "@typescript-eslint",
-    "import",
-    "react-hooks"
-  ],
+  "plugins": ["react", "@typescript-eslint", "import", "react-hooks"],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaFeatures": {
@@ -30,22 +26,18 @@
     "no-restricted-imports": [
       "warn",
       {
-        "patterns": [
-          "../*",
-          "./*"
-        ]
+        "patterns": ["../*", "./*"]
       }
     ],
-    "import/no-default-export": [
-      "error"
-    ],
+    "import/no-default-export": ["error"],
     "@typescript-eslint/no-unused-vars": [
       "warn",
       {
         "varsIgnorePattern": "_",
         "argsIgnorePattern": "_"
       }
-    ]
+    ],
+    "unicorn/prevent-abbreviations": "off"
   },
   "overrides": [
     {
@@ -59,7 +51,7 @@
       "rules": {
         "import/no-default-export": "off"
       }
-    },
+    }
   ],
   "settings": {
     "react": {

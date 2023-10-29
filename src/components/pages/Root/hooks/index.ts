@@ -8,6 +8,7 @@ if (process.env.NODE_ENV === "test" && import.meta.vitest) {
   describe("useRootPage", () => {
     it("初期状態", async () => {
       const { result } = renderHook(() => useRootPage());
+      expect(result.current).toEqual({});
     });
   });
 }
