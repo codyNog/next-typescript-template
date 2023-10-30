@@ -46,10 +46,18 @@
         "src/components/pages/**",
         "src/**/*.stories.**",
         "*.config.ts",
-        "plopfile.js"
+        "plopfile.js",
+        "src/app/**/page.tsx",
+        "src/app/**/layout.tsx"
       ],
       "rules": {
         "import/no-default-export": "off"
+      }
+    },
+    {
+      "files": ["src/app/**/page.tsx"],
+      "rules": {
+        "unicorn/prefer-export-from": "off"
       }
     }
   ],

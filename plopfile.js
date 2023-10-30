@@ -46,19 +46,23 @@ module.exports = function (plop) {
     actions: [
       {
         type: "add",
-        path: "src/components/pages/{{name}}/index.tsx",
+        path: "src/pages/{{name}}/index.tsx",
         templateFile: "plop-templates/page/index.tsx.hbs",
       },
       {
         type: "add",
-        path: "src/components/pages/{{name}}/index.stories.tsx",
+        path: "src/pages/{{name}}/index.stories.tsx",
         templateFile: "plop-templates/page/index.stories.tsx.hbs",
       },
       {
         type: "add",
-        path: "src/components/pages/{{name}}/hooks/index.ts",
+        path: "src/pages/{{name}}/hooks/index.ts",
         templateFile: "plop-templates/page/hooks/index.ts.hbs",
       },
+      { type: "add",
+        path: "src/app/{{name}}/page.tsx",
+        templateFile: "plop-templates/page/page.tsx.hbs",
+      }
     ],
   });
 };
