@@ -1,4 +1,8 @@
 /**
+ * @file 環境変数に関する定数を定義するファイル。
+ */
+
+/**
  * Sentry の Destination
  * @returns string
  **/
