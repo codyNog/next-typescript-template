@@ -1,4 +1,4 @@
 pre-push:
   commands:
     lint:
-      run: npm run lint
+      run: bun run lint
