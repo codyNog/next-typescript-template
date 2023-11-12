@@ -1,2 +1,2 @@
-import { RootPage } from "~/pages/root";
+import { RootPage } from "~/page-components/root";
 export default RootPage;

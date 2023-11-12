@@ -37,7 +37,8 @@
         "argsIgnorePattern": "_"
       }
     ],
-    "unicorn/prevent-abbreviations": "off"
+    "unicorn/prevent-abbreviations": "off",
+    "unicorn/no-null": "off"
   },
   "overrides": [
     {
