@@ -23,7 +23,7 @@
     "export": "next export",
     "generate": "npm run build && npm run export",
     "server": "npm run start",
-    "lint": "eslint --max-warnings=0 '**/*.tsx' '**/*.ts'",
+    "lint": "eslint --max-warnings=0 './src/**/*.tsx' './src/**/*.ts'",
     "markuplint": "markuplint \"./src/**/*.tsx\"",
     "test": "vitest run ./src",
     "storybook": "storybook dev -p 6006",
