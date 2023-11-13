@@ -73,6 +73,7 @@
     "markuplint": "latest",
     "papaparse": "^5.4.1",
     "plop": "^4.0.0",
+    "react-docgen-typescript-plugin": "^1.0.5",
     "storybook": "^7.5.3",
     "storycap": "^4.2.0",
     "typescript": "^5.2.2",
