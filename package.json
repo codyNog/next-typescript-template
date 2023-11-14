@@ -26,6 +26,7 @@
     "server": "npm run start",
     "lint": "run-p lint:*",
     "lint:script": "eslint --max-warnings=0 './src/**/*.tsx' './src/**/*.ts'",
+    "lint:format": "prettier --check ./src",
     "lint:markdown": "markdownlint-cli2 '**/*.md' !node_modules",
     "lint:spell": "cspell --quiet .",
     "test": "vitest run ./src",
