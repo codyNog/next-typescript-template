@@ -1,3 +1,3 @@
 export const RootPage = (): JSX.Element => {
-  return <div>rootpage</div>;
+  return <div>rootpage</div>; // cspell:disable-line
 };
