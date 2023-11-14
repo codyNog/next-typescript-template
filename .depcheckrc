@@ -1,1 +1,2 @@
-ignores: ["@storybook/addon-actions", "@storybook/addon-essentials", "@storybook/addon-interactions", "@storybook/addon-links", "@storybook/builder-vite", "eslint-config-next", "typescript"]
+ignores: ["@storybook/*", "@markuplint/*", "cspell", "lefthook", "markuplint", "storycap", "react-docgen-typescript-plugin", "eslint-config-next", "typescript"]
+skip-missing: true

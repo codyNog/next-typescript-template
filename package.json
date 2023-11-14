@@ -11,7 +11,6 @@
     "next": "^14.0.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-hook-form": "^7.48.2",
     "recoil": "^0.7.7",
     "valibot": "^0.20.1"
   },
