@@ -8,10 +8,10 @@
     "@hookform/resolvers": "^3.3.2",
     "@sentry/nextjs": "^7.80.0",
     "@tanstack/react-query": "^5.8.3",
+    "jotai": "^2.5.1",
     "next": "^14.0.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "recoil": "^0.7.7",
     "valibot": "^0.20.1"
   },
   "scripts": {

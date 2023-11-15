@@ -1,5 +1,4 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { RecoilRoot } from "recoil";
 
 const queryClient = new QueryClient({});
 
@@ -12,8 +11,6 @@ type Props = {
  **/
 export const Providers = ({ children }: Props) => {
   return (
-    <QueryClientProvider client={queryClient}>
-      <RecoilRoot>{children}</RecoilRoot>
-    </QueryClientProvider>
+    <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
   );
 };
