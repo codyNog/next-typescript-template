@@ -1,2 +1,2 @@
-ignores: ["@storybook/*", "@markuplint/*", "cspell", "lefthook", "markuplint", "storycap", "react-docgen-typescript-plugin", "eslint-config-next", "typescript"]
+ignores: ["@types/node", "@storybook/*", "@markuplint/*", "cspell", "lefthook", "markuplint", "storycap", "react-docgen-typescript-plugin", "eslint-config-next", "typescript"]
 skip-missing: true
