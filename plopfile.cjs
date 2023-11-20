@@ -87,10 +87,11 @@ module.exports = function (plop) {
         path: "src/page-components/{{lowerCase name}}/hooks/index.ts",
         templateFile: "plop-templates/page/hooks/index.ts.hbs",
       },
-      { type: "add",
+      {
+        type: "add",
         path: "src/app/{{lowerCase name}}/page.tsx",
         templateFile: "plop-templates/page/page.tsx.hbs",
-      }
+      },
     ],
   });
 };

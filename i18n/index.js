@@ -1,10 +1,10 @@
-import fs from 'node:fs'
-import { parse } from 'papaparse'
-import csvFile from './index.csv'
+import fs from "node:fs";
+import { parse } from "papaparse";
+import csvFile from "./index.csv";
 
 // CSVファイルを読み込み、JSONに変換する関数
 const convertCsvToJson = (csvFilePath) => {
-  const csvFile = fs.readFileSync(csvFilePath, 'utf8');
+  const csvFile = fs.readFileSync(csvFilePath, "utf8");
 
   // PapaParseを使用してCSVをパース
   parse(csvFile, {
@@ -21,21 +21,28 @@ const convertCsvToJson = (csvFilePath) => {
             jsonDataObject[key] = {};
           }
 
-          jsonDataObject[key][row['key']] = row[key];
+          jsonDataObject[key][row["key"]] = row[key];
         }
       }
 
       // 各列に対応するJSONをファイルに書き込む
       for (const key of Object.keys(jsonDataObject)) {
-        if(key === 'key') continue;
+        if (key === "key") continue;
         const jsonFilePath = `./gen/i18n/${key}.ts`;
-        fs.writeFileSync(jsonFilePath, `export default ${JSON.stringify(jsonDataObject[key])} as const;`, null, 2);
-        console.log(`Conversion complete. JSON file created at ${jsonFilePath}`);
+        fs.writeFileSync(
+          jsonFilePath,
+          `export default ${JSON.stringify(jsonDataObject[key])} as const;`,
+          null,
+          2
+        );
+        console.log(
+          `Conversion complete. JSON file created at ${jsonFilePath}`
+        );
       }
     },
     error: (error) => {
-      console.error('Error parsing CSV:', error.message);
-    }
+      console.error("Error parsing CSV:", error.message);
+    },
   });
 };
 

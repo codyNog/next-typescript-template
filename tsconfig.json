@@ -1,11 +1,7 @@
 {
   "compilerOptions": {
     "target": "ESNext",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
@@ -18,18 +14,11 @@
     "jsx": "preserve",
     "baseUrl": ".",
     "paths": {
-      "~/*": [
-        "./src/*"
-      ],
-      "@gen/*": [
-        "./gen/*"
-      ]
+      "~/*": ["./src/*"],
+      "@gen/*": ["./gen/*"]
     },
     "incremental": true,
-    "types": [
-      "vitest/importMeta",
-      "vitest/globals"
-    ],
+    "types": ["vitest/importMeta", "vitest/globals"],
     "strict": true,
     "strictNullChecks": true,
     "plugins": [
@@ -38,13 +27,6 @@
       }
     ]
   },
-  "exclude": [
-    "node_modules"
-  ],
-  "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    ".next/types/**/*.ts"
-  ]
+  "exclude": ["node_modules"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"]
 }

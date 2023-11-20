@@ -1,4 +1,4 @@
 {
-    "ignorePaths": ["node_modules", "bun.lockb", "./package.json"],
-    "words": ["papaparse", "valibot", "viewports"]
+  "ignorePaths": ["node_modules", "bun.lockb", "./package.json"],
+  "words": ["papaparse", "valibot", "viewports"]
 }
