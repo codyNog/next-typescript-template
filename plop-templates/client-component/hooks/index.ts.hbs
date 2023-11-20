@@ -1,3 +1,5 @@
+import { Providers } from "~/store/Providers";
+
 export const use{{pascalCase name}} = () => {
     return {}
 };
@@ -7,7 +9,7 @@ const { renderHook } = await import("@testing-library/react");
 
 describe("use{{pascalCase name}}", () => {
     it("初期状態", async () => {
-      const { result } = renderHook(() => useFoo());
+      const { result } = renderHook(() => use{{pascalCase name}}(), {wrapper: Providers});
       expect(result.current).toStrictEqual({});
     });
-}
+})}
