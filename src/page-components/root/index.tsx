@@ -1,3 +1,5 @@
-export const RootPage = (): JSX.Element => {
-  return <div>rootpage</div>; // cspell:disable-line
+const RootPage = (): JSX.Element => {
+  return <div>RootPage</div> // cspell-disable-line
 };
+
+export default RootPage;

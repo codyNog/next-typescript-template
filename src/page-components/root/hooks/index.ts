@@ -11,7 +11,7 @@ if (process.env.NODE_ENV === "test" && import.meta.vitest) {
       const { result } = renderHook(() => useRootPage(), {
         wrapper: Providers,
       });
-      expect(result.current).toEqual({});
+      expect(result.current).toStrictEqual({});
     });
   });
 }

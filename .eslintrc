@@ -43,8 +43,7 @@
   "overrides": [
     {
       "files": [
-        "src/pages/**",
-        "src/components/pages/**",
+        "src/page-components/**",
         "src/**/*.stories.**",
         "*.config.ts",
         "plopfile.js",

@@ -1,14 +1,15 @@
 export const use{{pascalCase name}}Page = () => {
-return {}
+  return {};
 };
 
 if (process.env.NODE_ENV === "test" && import.meta.vitest) {
-const { renderHook } = await import("@testing-library/react");
+  const { renderHook } = await import("@testing-library/react");
+  const { Providers } = await import("~/store/Providers");
 
-describe("use{{pascalCase name}}Page", () => {
-it("初期状態", async () => {
-const { result } = renderHook(() => use{{pascalCase name}}Page());
-
-});
-});
+  describe("use{{pascalCase name}}Page", () => {
+    it("初期状態", async () => {
+      const { result } = renderHook(() => use{{pascalCase name}}Page(), { wrapper: Providers });
+      expect(result.current).toStrictEqual({});
+    });
+  });
 }
