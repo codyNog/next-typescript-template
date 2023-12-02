@@ -61,8 +61,9 @@ module.exports = function (plop) {
       },
     ],
   });
-  plop.setGenerator("page", {
-    description: "page component",
+  // App Router 用のテンプレート
+/*   plop.setGenerator("page", {
+    description: "app router page component",
     prompts: [
       // 入力させたい値につけたnameをactionsやtemplate内で参照できます
       {
@@ -93,5 +94,39 @@ module.exports = function (plop) {
         templateFile: "plop-templates/page/page.tsx.hbs",
       },
     ],
+  }); */
+  // Page Router 用のテンプレート
+  plop.setGenerator("page", {
+    description: "page router page component",
+    prompts: [
+      // 入力させたい値につけたnameをactionsやtemplate内で参照できます
+      {
+        type: "input",
+        name: "name",
+        message: "component name please",
+      },
+    ],
+    actions: [
+      {
+        type: "add",
+        path: "src/page-components/{{lowerCase name}}/index.tsx",
+        templateFile: "plop-templates/page/index.tsx.hbs",
+      },
+      {
+        type: "add",
+        path: "src/page-components/{{lowerCase name}}/index.stories.tsx",
+        templateFile: "plop-templates/page/index.stories.tsx.hbs",
+      },
+      {
+        type: "add",
+        path: "src/page-components/{{lowerCase name}}/hooks/index.ts",
+        templateFile: "plop-templates/page/hooks/index.ts.hbs",
+      },
+      {
+        type: "add",
+        path: "src/pages/{{lowerCase name}}/index.tsx",
+        templateFile: "plop-templates/page/page.tsx.hbs",
+      },
+    ]
   });
 };

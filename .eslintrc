@@ -48,14 +48,15 @@
         "*.config.ts",
         "plopfile.js",
         "src/app/**/page.tsx",
-        "src/app/**/layout.tsx"
+        "src/app/**/layout.tsx",
+        "src/pages/**/index.tsx"
       ],
       "rules": {
         "import/no-default-export": "off"
       }
     },
     {
-      "files": ["src/app/**/page.tsx"],
+      "files": ["src/app/**/page.tsx", "src/pages/**/index.tsx"],
       "rules": {
         "unicorn/prefer-export-from": "off"
       }
