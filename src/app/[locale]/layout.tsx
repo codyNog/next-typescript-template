@@ -1,5 +1,5 @@
 import { ReactElement } from "react";
-import { I18nProviderClient } from "~/i18n/locales/client";
+import { I18nProviderClient } from "~/i18n/locales/app/client";
 
 export default function SubLayout({
   params: { locale },

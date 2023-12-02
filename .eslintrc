@@ -49,7 +49,7 @@
         "plopfile.js",
         "src/app/**/page.tsx",
         "src/app/**/layout.tsx",
-        "src/pages/**/index.tsx"
+        "src/pages/**"
       ],
       "rules": {
         "import/no-default-export": "off"
