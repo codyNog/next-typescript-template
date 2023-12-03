@@ -129,4 +129,31 @@ module.exports = function (plop) {
       },
     ]
   });
+  plop.setGenerator("domain", {
+    description: "domain",
+    prompts:[
+      {
+        type: "input",
+        name: "name",
+        message: "domain name please",
+      },
+    ],
+    actions: [
+      { 
+        type: "add",
+        path: "src/domain/repositories/{{pascalCase name}}/index.ts",
+        templateFile: "plop-templates/domain/repository.ts.hbs",
+      },
+      { 
+        type: "add",
+        path: "src/domain/entities/{{pascalCase name}}/index.ts",
+        templateFile: "plop-templates/domain/entity.ts.hbs",
+      },
+      { 
+        type: "add",
+        path: "src/constants/mock/{{pascalCase name}}/index.ts",
+        templateFile: "plop-templates/domain/mock.ts.hbs",
+      }
+    ]
+  })
 };

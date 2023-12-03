@@ -1,0 +1,23 @@
+import { Input, object, parse } from "valibot";
+
+const {{ name }}Schema = object({});
+
+/**
+ * {{pascalCase name}} 概念の型定義
+ **/
+export type {{pascalCase name}} = Input<typeof {{ name }}Schema>;
+
+/**
+ * {{pascalCase name}} 概念の型定義をパースする
+ * @returns {{pascalCase name}}
+ */
+export const parse{{pascalCase name}} = ({{ name }}: unknown): {{pascalCase name}} => parse({{ name }}Schema, {{ name }});
+
+if (process.env.NODE_ENV === "test" && import.meta.vitest) {
+  describe("entities/{{pascalCase name}}", () => {
+    it("parse{{pascalCase name}}", () => {
+      const valid: {{pascalCase name}} = {};
+      expect(parse{{pascalCase name}}(valid)).toStrictEqual(valid);
+    });
+  });
+}

@@ -29,6 +29,7 @@
         "patterns": ["../*", "./*"]
       }
     ],
+    "no-unused-vars": "off",
     "import/no-default-export": ["error"],
     "@typescript-eslint/no-unused-vars": [
       "warn",
