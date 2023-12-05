@@ -1,4 +1,4 @@
 {
-  "ignorePaths": ["node_modules", "bun.lockb", "./package.json"],
+  "ignorePaths": ["node_modules", "bun.lockb", "./package.json", "./docker-compose.yml", " ./prisma/*"],
   "words": ["papaparse", "valibot", "viewports"]
 }

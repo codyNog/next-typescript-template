@@ -11,8 +11,20 @@ datasource db {
 }
 
 model User {
-  id    String @id @unique @default(uuid())
-  email String @unique
-  name  String
-  age   Int
+  id         String     @id @unique @default(uuid())
+  email      String     @unique
+  name       String
+  age        Int
+  properties Property[]
+}
+
+model Property {
+  id        String   @id @unique @default(uuid())
+  name      String
+  location  String
+  price     Int
+  owner     User     @relation(fields: [ownerId], references: [id])
+  ownerId   String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }

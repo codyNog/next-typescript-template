@@ -1,11 +1,22 @@
-import { Input, email, number, object, parse, string, uuid } from "valibot";
+import {
+  Input,
+  array,
+  email,
+  number,
+  object,
+  parse,
+  string,
+  uuid,
+} from "valibot";
 import { User as PrismaUser } from "@prisma/client";
+import { propertySchema } from "~/domain/entities/Property";
 
 const UserSchema = object({
   id: string([uuid()]),
   email: string([email()]),
   name: string(),
   age: number(),
+  properties: array(propertySchema),
 });
 
 /**
@@ -27,6 +38,7 @@ const _u = parseUser({
   email: "example@example.com",
   name: "foo",
   age: 1,
+  properties: [],
 }) satisfies PrismaUser;
 
 const getUserParameterSchema = string([uuid()]);
@@ -53,6 +65,7 @@ if (process.env.NODE_ENV === "test" && import.meta.vitest) {
         email: "example@example.com",
         name: "foo",
         age: 1,
+        properties: [],
       };
       expect(parseUser(valid)).toStrictEqual(valid);
     });
