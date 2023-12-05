@@ -1,4 +1,10 @@
-import { User } from "~/domain/entities/User";
+import {
+  DeleteUserParameter,
+  GetUserParameter,
+  User,
+  parseDeleteUserParameter,
+  parseGetUserParameter,
+} from "~/domain/entities/User";
 import { prisma } from "~/libs/prisma";
 
 /**
@@ -17,7 +23,25 @@ const getUsers = async (): Promise<User[]> => {
   return prisma.user.findMany();
 };
 
-export { createUser, getUsers };
+const getUser = async (param: GetUserParameter): Promise<User> => {
+  const id = parseGetUserParameter(param);
+  const user = await prisma.user.findUnique({ where: { id } });
+  if (!user) throw new Error("User not found");
+  return user;
+};
+
+const updateUser = async (user: User): Promise<User> => {
+  return prisma.user.update({ where: { id: user.id }, data: user });
+};
+
+const deleteUser = async (param: DeleteUserParameter): Promise<User> => {
+  const id = parseDeleteUserParameter(param);
+  const user = await prisma.user.delete({ where: { id } });
+  if (!user) throw new Error("User not found");
+  return user;
+};
+
+export { createUser, getUsers, getUser, updateUser, deleteUser };
 
 if (process.env.NODE_ENV === "test" && import.meta.vitest) {
   describe.skip("repositories/User", () => {});

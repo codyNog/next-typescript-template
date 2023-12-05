@@ -29,6 +29,22 @@ const _u = parseUser({
   age: 1,
 }) satisfies PrismaUser;
 
+const getUserParameterSchema = string([uuid()]);
+
+export type GetUserParameter = Input<typeof getUserParameterSchema>;
+
+export const parseGetUserParameter = (
+  getUserParameter: unknown
+): GetUserParameter => parse(getUserParameterSchema, getUserParameter);
+
+const deleteUserParameterSchema = string([uuid()]);
+
+export type DeleteUserParameter = Input<typeof deleteUserParameterSchema>;
+
+export const parseDeleteUserParameter = (
+  deleteUserParameter: unknown
+): DeleteUserParameter => parse(deleteUserParameterSchema, deleteUserParameter);
+
 if (process.env.NODE_ENV === "test" && import.meta.vitest) {
   describe("entities/User", () => {
     it("parseUser", () => {
