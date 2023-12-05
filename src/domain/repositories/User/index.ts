@@ -11,5 +11,5 @@ const createUser = async (user: User): Promise<User> => {
 export { createUser };
 
 if (process.env.NODE_ENV === "test" && import.meta.vitest) {
-  describe("repositories/User", () => {});
+  describe.skip("repositories/User", () => {});
 }

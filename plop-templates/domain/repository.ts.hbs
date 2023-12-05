@@ -11,5 +11,5 @@ const create{{ pascalCase name }} = async ({{ lowerCase name }}: {{ pascalCase n
 export { create{{ pascalCase name }} };
 
 if (process.env.NODE_ENV === "test" && import.meta.vitest) {
-  describe("repositories/{{ pascalCase name }}", () => {});
+  describe.skip("repositories/{{ pascalCase name }}", () => {});
 }
