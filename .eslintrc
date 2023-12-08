@@ -50,7 +50,8 @@
         "plopfile.js",
         "src/app/**/page.tsx",
         "src/app/**/layout.tsx",
-        "src/pages/**"
+        "src/pages/**",
+        "next.config.js"
       ],
       "rules": {
         "import/no-default-export": "off"
