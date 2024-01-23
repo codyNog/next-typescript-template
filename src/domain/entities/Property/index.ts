@@ -1,4 +1,4 @@
-import { Input, date, number, object, parse, string, uuid } from "valibot";
+import { Input, date, number, object, safeParse, string, uuid } from "valibot";
 
 export const propertySchema = object({
   id: string([uuid()]),
@@ -12,7 +12,15 @@ export const propertySchema = object({
 
 export type Property = Input<typeof propertySchema>;
 
-export const parseProperty = (property: unknown): Property =>
-  parse(propertySchema, property);
+export const parseProperty = (property: unknown) =>
+  safeParse(propertySchema, property);
 
-const _p = parseProperty({});
+const _p = parseProperty({
+  id: "5ae864f6-4fad-4f64-98b6-54048c3b9c83",
+  name: "",
+  location: "",
+  price: 0,
+  ownerId: "",
+  createdAt: new Date(),
+  updatedAt: new Date(),
+});

@@ -1,9 +1,14 @@
 import {
+  CreateUserParameter,
   DeleteUserParameter,
   GetUserParameter,
+  GetUsersParameter,
   User,
+  parseCreateUserParameter,
   parseDeleteUserParameter,
   parseGetUserParameter,
+  parseGetUsersParameter,
+  parseUser,
 } from "~/domain/entities/User";
 import { prisma } from "~/libs/prisma";
 
@@ -11,8 +16,11 @@ import { prisma } from "~/libs/prisma";
  * User 一件作成
  * @returns 新規作成 User
  **/
-const createUser = async (user: User): Promise<User> => {
+const createUser = async (user: CreateUserParameter): Promise<User> => {
+  const result = parseCreateUserParameter(user);
+  if (!result.success) throw new Error("Invalid parameter");
   const { properties, ...rest } = user;
+
   return prisma.user.create({
     data: { ...rest, properties: { create: properties } },
     include: { properties: true },
@@ -23,14 +31,23 @@ const createUser = async (user: User): Promise<User> => {
  * User 全件取得
  * @returns User[]
  **/
-const getUsers = async (): Promise<User[]> => {
+const getUsers = async (param: GetUsersParameter): Promise<User[]> => {
+  console.log(param);
+  const result = parseGetUsersParameter(param);
+  if (!result.success) throw new Error("Invalid parameter");
   return prisma.user.findMany({
+    where: {
+      name: { contains: param.name },
+      age: { gte: param.minAge, lte: param.maxAge },
+    },
     include: { properties: true },
   });
 };
 
 const getUser = async (param: GetUserParameter): Promise<User> => {
-  const id = parseGetUserParameter(param);
+  const result = parseGetUserParameter(param);
+  if (!result.success) throw new Error("Invalid parameter");
+  const id = result.output;
   const user = await prisma.user.findUnique({
     where: { id },
     include: { properties: true },
@@ -40,6 +57,8 @@ const getUser = async (param: GetUserParameter): Promise<User> => {
 };
 
 const updateUser = async (user: User): Promise<User> => {
+  const result = parseUser(user);
+  if (!result.success) throw new Error("Invalid parameter");
   const { properties, ...rest } = user;
   return prisma.user.update({
     where: { id: user.id },
@@ -49,7 +68,9 @@ const updateUser = async (user: User): Promise<User> => {
 };
 
 const deleteUser = async (param: DeleteUserParameter): Promise<User> => {
-  const id = parseDeleteUserParameter(param);
+  const result = parseDeleteUserParameter(param);
+  if (!result.success) throw new Error("Invalid parameter");
+  const id = result.output;
   const user = await prisma.user.delete({
     where: { id },
     include: { properties: true },

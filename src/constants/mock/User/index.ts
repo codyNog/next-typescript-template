@@ -5,6 +5,7 @@ const user: User = {
   email: "example@example.com",
   name: "foo",
   age: 1,
+  properties: [],
 };
 
 const users: User[] = [user];
