@@ -1,8 +1,7 @@
-import { UserForm } from "~/components/UserForm";
-import { usersNewAction } from "~/page-components/users/new/action";
+import { CreateUserForm } from "~/components/CreateUserForm";
 
 const UserNewPage = async (): Promise<JSX.Element> => {
-  return <UserForm action={usersNewAction} />;
+  return <CreateUserForm redirectPath={"/users"} />;
 };
 
 export default UserNewPage;

@@ -1,15 +1,12 @@
 import { Providers } from "~/store/Providers";
 import { useForm } from "react-hook-form";
-import {
-  CreateUserParameter,
-  createUserParameterSchema,
-} from "~/domain/entities/User";
+import { User, userSchema } from "~/domain/entities/User";
 import { valibotResolver } from "@hookform/resolvers/valibot";
 import { useCallback } from "react";
 
 type Args = {
-  action: (value: CreateUserParameter) => void;
-  defaultValues?: CreateUserParameter;
+  action: (value: User) => void;
+  defaultValues?: User;
 };
 
 export const useUserForm = ({ action, defaultValues }: Args) => {
@@ -17,9 +14,10 @@ export const useUserForm = ({ action, defaultValues }: Args) => {
     register,
     formState: { errors },
     handleSubmit,
-  } = useForm<CreateUserParameter>({
-    resolver: valibotResolver(createUserParameterSchema),
+  } = useForm<User>({
+    resolver: valibotResolver(userSchema),
     defaultValues: defaultValues || {
+      id: "5ae864f6-4fad-4f64-98b6-54048c3b9c83",
       name: "",
       email: "",
       age: 0,

@@ -2,6 +2,7 @@ import {
   Input,
   array,
   email,
+  literal,
   minLength,
   number,
   object,
@@ -9,11 +10,12 @@ import {
   optional,
   safeParse,
   string,
+  union,
   uuid,
 } from "valibot";
 import { propertySchema } from "~/domain/entities/Property";
 
-const userSchema = object({
+export const userSchema = object({
   id: string([uuid()]),
   email: string([email("email must be valid")]),
   name: string([minLength(1)]),
@@ -32,7 +34,7 @@ export type User = Input<typeof userSchema>;
  */
 export const parseUser = (user: unknown) => safeParse(userSchema, user);
 
-export const createUserParameterSchema = omit(userSchema, ["id"]);
+const createUserParameterSchema = omit(userSchema, ["id"]);
 
 export type CreateUserParameter = Input<typeof createUserParameterSchema>;
 
@@ -50,6 +52,8 @@ const getUsersParameterSchema = object({
   name: optional(string()),
   maxAge: optional(number()),
   minAge: optional(number()),
+  orderBy: optional(union([literal("name"), literal("age")])),
+  sortKey: optional(union([literal("asc"), literal("desc")])),
 });
 
 export type GetUsersParameter = Input<typeof getUsersParameterSchema>;
@@ -74,7 +78,7 @@ if (process.env.NODE_ENV === "test" && import.meta.vitest) {
         age: 1,
         properties: [],
       };
-      expect(parseUser(valid)).toStrictEqual(valid);
+      expect(parseUser(valid).output).toStrictEqual(valid);
     });
   });
 }

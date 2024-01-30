@@ -1,0 +1,25 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`GetUsersParameterForm > 正常にレンダリングされる 1`] = `
+<div>
+  <form>
+    <input
+      name="name"
+      type="text"
+    />
+    <input
+      name="minAge"
+      type="number"
+    />
+    <input
+      name="maxAge"
+      type="number"
+    />
+    <button
+      type="submit"
+    >
+      検索
+    </button>
+  </form>
+</div>
+`;

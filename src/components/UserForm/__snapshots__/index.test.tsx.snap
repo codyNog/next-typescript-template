@@ -1,0 +1,28 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`UserForm > 正常にレンダリングされる 1`] = `
+<div>
+  <form>
+    <input
+      name="name"
+      placeholder="name"
+      type="text"
+    />
+    <input
+      name="email"
+      placeholder="email"
+      type="text"
+    />
+    <input
+      name="age"
+      placeholder="age"
+      type="number"
+    />
+    <button
+      type="submit"
+    >
+      送信
+    </button>
+  </form>
+</div>
+`;

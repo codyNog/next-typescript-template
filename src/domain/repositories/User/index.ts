@@ -32,7 +32,6 @@ const createUser = async (user: CreateUserParameter): Promise<User> => {
  * @returns User[]
  **/
 const getUsers = async (param: GetUsersParameter): Promise<User[]> => {
-  console.log(param);
   const result = parseGetUsersParameter(param);
   if (!result.success) throw new Error("Invalid parameter");
   return prisma.user.findMany({
