@@ -21,7 +21,7 @@ const convertCsvToJson = (csvFilePath) => {
             jsonDataObject[key] = {};
           }
 
-          jsonDataObject[key][row["key"]] = row[key];
+          jsonDataObject[key][row[key]] = row[key];
         }
       }
 
@@ -33,10 +33,10 @@ const convertCsvToJson = (csvFilePath) => {
           jsonFilePath,
           `export default ${JSON.stringify(jsonDataObject[key])} as const;`,
           null,
-          2
+          2,
         );
         console.log(
-          `Conversion complete. JSON file created at ${jsonFilePath}`
+          `Conversion complete. JSON file created at ${jsonFilePath}`,
         );
       }
     },

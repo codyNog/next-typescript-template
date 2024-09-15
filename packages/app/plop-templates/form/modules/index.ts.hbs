@@ -1,0 +1,23 @@
+import type { {{pascalCase name}}FormValues } from "@/components/{{pascalCase name}}Form/types";
+
+// fix this to convert form values to create params
+const toCreateParams = (
+  values: {{pascalCase name}}FormValues,
+) => {
+  return { ...values };
+};
+
+// fix this to convert form values to update params
+const toUpdateParams = (
+  values: {{pascalCase name}}FormValues,
+) => {
+  return {
+    ...values
+  }
+};
+
+export const {{name}}FormModules = {
+    toCreateParams,
+    toUpdateParams
+}
+

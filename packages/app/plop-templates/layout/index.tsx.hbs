@@ -1,0 +1,11 @@
+import { I18nProviderClient } from "@/locales/client";
+import type { ReactNode } from "react";
+import _styles from "./index.module.css";
+
+type LayoutProps = { params: { locale: string }; children: ReactNode };
+
+const Layout = ({ params: { locale }, children }: LayoutProps) => {
+  return <I18nProviderClient locale={locale}>{children}</I18nProviderClient>;
+};
+
+export default Layout;

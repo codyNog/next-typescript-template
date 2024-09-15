@@ -1,0 +1,13 @@
+import useSWR from 'swr';
+import { {{name}}ParamsSchema } from "@/api/{{name}}/types";
+import type { {{pascalCase name}}Params, {{pascalCase name}}ReturnValue } from "@/api/{{name}}/types";
+
+const fetcher = async (url: string) => (await fetch(url)).json()
+
+/**
+ * SWR hook for GET /api/{{name}}
+ */
+export const use{{pascalCase name}}SWR = (params: {{pascalCase name}}Params) => {
+  {{name}}ParamsSchema.parse(params);
+  return useSWR<{{pascalCase name}}ReturnValue>('/api/{{name}}',fetcher);
+};

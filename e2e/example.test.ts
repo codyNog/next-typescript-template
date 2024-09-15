@@ -1,4 +1,4 @@
-import { test, expect } from "@playwright/test";
+import { expect, test } from "@playwright/test";
 
 const URL = process.env.URL || "http://localhost:3000/";
 console.log(URL);
