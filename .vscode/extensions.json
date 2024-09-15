@@ -1,0 +1,17 @@
+{
+  "recommendations": [
+    "biomejs.biome",
+    "streetsidesoftware.code-spell-checker",
+    "github.vscode-pull-request-github",
+    "ms-vsliveshare.vsliveshare",
+    "ms-azuretools.vscode-docker",
+    "janisdd.vscode-edit-csv",
+    "mosapride.zenkaku",
+    "redhat.vscode-yaml",
+    "yoavbls.pretty-ts-errors",
+    "github.copilot-chat",
+    "prisma.prisma",
+    "DavidAnson.vscode-markdownlint"
+  ],
+  "unwantedRecommendations": []
+}

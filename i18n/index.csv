@@ -1,0 +1,12 @@
+key,ja-JP,en-US
+undefined,,
+name,名前,Name
+submit,送信,Submit
+email,メールアドレス,Email
+password,パスワード,Password
+age,年齢,Age
+isAdmin,管理者,Is Admin
+tenantId,テナントID,Tenant ID
+
+# form
+form.submit,送信,Submit

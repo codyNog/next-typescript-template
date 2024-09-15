@@ -1,0 +1,28 @@
+import { {{ name }}ActionParamsSchema, {{ name }}ActionReturnValueSchema } from "./types";
+import type { {{ pascalCase name }}ActionParams, {{ pascalCase name }}ActionReturnValue } from "./types";
+import { actionClient } from "@/libs/server-actions";
+import { IS_STORYBOOK } from "shared/constants/env";
+import { {{ name }}ActionMock } from "./mock";
+
+const action = actionClient
+  .schema({{ name }}ActionParamsSchema)
+  .action(async ({ parsedInput }): Promise<{{ pascalCase name }}ActionReturnValue> => {
+    // fix this to actually do something
+    console.log(parsedInput);
+    return {};
+  });
+
+export const {{ name }}Action = async (
+  params: {{ pascalCase name }}ActionParams,
+): Promise<{{ pascalCase name }}ActionReturnValue> => {
+  "use server";
+
+  // TODO: fix storybook workaround
+  if(IS_STORYBOOK) return {{ name }}ActionMock.returnValue;
+
+  const data = (await action(params))?.data;
+
+  if (!data) throw new Error("data not found");
+
+  return {{ name }}ActionReturnValueSchema.parse(data);
+};

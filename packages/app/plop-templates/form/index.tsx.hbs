@@ -1,0 +1,16 @@
+'use client';
+import { use{{pascalCase name}}Form } from "@/components/{{pascalCase name}}Form/hooks";
+import type { Props } from "@/components/{{pascalCase name}}Form/types";
+import _styles from "@/components/{{pascalCase name}}Form/index.module.css";
+
+/**
+ * Form Component for create or update {{pascalCase name}}.
+ * @param {Props} props {@link Props}
+ */
+export const {{pascalCase name}}Form = (props: Props) => {
+  const { form, fields: _, action, t} = use{{pascalCase name}}Form(props);
+  return <form id={form.id} onSubmit={form.onSubmit} action={action} noValidate>
+    {{pascalCase name}}Form
+    <button type="submit">{t("form.submit")}</button>
+  </form>
+};

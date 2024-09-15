@@ -1,0 +1,31 @@
+import { type Props, {{camelCase name}}FormValuesSchema } from "@/components/{{pascalCase name}}Form/types";
+import { useI18n } from "@/locales/client";
+import { useForm } from "@conform-to/react";
+import { parseWithZod } from "@conform-to/zod";
+import { useFormState } from "react-dom";
+
+export const use{{pascalCase name}}Form = ({ action: serverAction, defaultValues }: Props) => {
+  const [lastResult, action] = useFormState(
+    async (_: unknown, formData: FormData) => {
+      const submission = parseWithZod(formData, {
+        schema: {{camelCase name}}FormValuesSchema,
+      });
+
+      if (submission.status !== "success") {
+        return submission.reply();
+      }
+      await serverAction(submission.value);
+    },
+    undefined,
+  );
+  const [form, fields] = useForm({
+    lastResult,
+    onValidate: ({ formData }) => {
+      return parseWithZod(formData, { schema: {{camelCase name}}FormValuesSchema });
+    },
+    defaultValue: defaultValues,
+  });
+  const t = useI18n();
+
+  return { action, form, fields, t };
+};

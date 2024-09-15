@@ -1,0 +1,17 @@
+import { Component } from "@/components/{{pascalCase name}}Table/component";
+import { getCurrentLocale } from "@/locales/server";
+import type { TableData } from "@/components/{{pascalCase name}}Table/types";
+
+// biome-ignore lint:
+type Props = { params: any };
+
+/**
+ * Table Component for display {{pascalCase name}}.
+ * @param {Props} props {@link Props}
+ */
+export const {{pascalCase name}}Table = async ({ params: _ }: Props) => {
+  const data: TableData[] = []
+  const locale = getCurrentLocale();
+
+  return <Component data={data} locale={locale}/>;
+};

@@ -1,0 +1,37 @@
+'use client';
+import { useI18n } from "@/locales/client"
+import type { getCurrentLocale } from "@/locales/server";
+import type { TableData } from "@/components/{{ pascalCase name }}Table/types";
+import { type AccessorKeyColumnDef, Table, createColumnHelper } from "ui/Table";
+import type { TablePrimaryAction } from "ui/Table/types";
+import { useCallback, useState } from "react";
+import { Dialog } from "ui/Dialog";
+
+type Props = {
+    data: TableData[];
+    locale: ReturnType<typeof getCurrentLocale>
+      action?: TablePrimaryAction;
+}
+
+export const Component = ({ data, locale: _, action }: Props) => {
+  const _t = useI18n();
+  const _columnHelper = createColumnHelper<TableData>();
+  // biome-ignore lint:
+  const columns: AccessorKeyColumnDef<TableData, any>[] = [];
+  const [openDialog, setopenDialog] = useState(false);
+  const [ids, setIds] = useState<string[]>([]);
+
+  const _openDialogAction = useCallback((ids: string[]) => {
+    setIds(ids);
+    setopenDialog(true);
+  }, [])
+
+  return (<>
+  <Table<TableData> data={data} columns={columns} actions={(_ids) => []} primaryAction={action} />
+    <Dialog         open={openDialog && !!ids.length}
+        title={"title"}
+        content={<div>content</div>}
+        variant="alert"
+        actions={[]} />
+    </>);
+};

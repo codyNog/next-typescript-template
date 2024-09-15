@@ -1,0 +1,28 @@
+"use server";
+import _styles from "@/components/{{pascalCase name}}/index.module.css";
+
+/**
+ * fix or remove this type
+ */
+ // biome-ignore lint:
+type Params = {}
+
+/**
+ * fix or remove this type
+ */
+// biome-ignore lint:
+type SearchParams = {}
+
+type Props = {
+  params: Params;
+  searchParams: SearchParams;
+}
+
+/**
+ * describe this page's features
+ */
+const {{pascalCase name}}Page = async (_props: Props) => {
+  return <div>{{pascalCase name}}Page</div>
+};
+
+export default {{pascalCase name}}Page;
