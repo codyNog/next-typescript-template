@@ -1,0 +1,13 @@
+import { NextResponse } from 'next/server'
+import type { NextRequest } from 'next/server'
+import type { {{pascalCase name}}ReturnValue} from "@/api/{{name}}/types";
+
+/**
+ * GET /api/{{name}}
+ */
+export const GET = async (request: NextRequest): Promise<NextResponse<{{pascalCase name}}ReturnValue>> => {
+  const { searchParams } = new URL(request.url);
+  // fix this
+  const _name = searchParams.get("name");
+  return NextResponse.json({ message: 'Hello, World!' })
+}

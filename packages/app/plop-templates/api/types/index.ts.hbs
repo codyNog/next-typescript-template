@@ -1,0 +1,11 @@
+import {z} from "zod"
+
+export const {{name}}ParamsSchema = z.object({})
+
+export type {{pascalCase name}}Params = z.infer<typeof {{name}}ParamsSchema>
+
+export const {{name}}ReturnValueSchema = z.object({
+    message: z.string()
+})
+
+export type {{pascalCase name}}ReturnValue = z.infer<typeof {{name}}ReturnValueSchema>
