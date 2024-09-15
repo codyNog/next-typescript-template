@@ -1,0 +1,14 @@
+import type {Create{{pascalCase name}}Params, Create{{pascalCase name}}ReturnValue, Update{{pascalCase name}}Params, Update{{pascalCase name}}ReturnValue, Delete{{pascalCase name}}Params, Delete{{pascalCase name}}ReturnValue } from './types';
+import { {{camelCase name}}Mock } from './mock';
+
+export const create{{pascalCase name}} = async(_params: Create{{pascalCase name}}Params): Promise<Create{{pascalCase name}}ReturnValue> => {
+    return {{camelCase name}}Mock.createReturnValue
+};
+
+export const update{{pascalCase name}} = async(_params: Update{{pascalCase name}}Params): Promise<Update{{pascalCase name}}ReturnValue> => {
+    return {{camelCase name}}Mock.updateReturnValue
+};
+
+export const delete{{pascalCase name}} = async(_params: Delete{{pascalCase name}}Params): Promise<Delete{{pascalCase name}}ReturnValue> => {
+    return {{camelCase name}}Mock.deleteReturnValue
+};
