@@ -1,6 +1,6 @@
+import { createI18nMiddleware } from "next-international/middleware";
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
-import { createI18nMiddleware } from "next-international/middleware";
 
 const I18nMiddleware = createI18nMiddleware({
   locales: ["en", "ja"],
