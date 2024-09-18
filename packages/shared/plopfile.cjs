@@ -31,4 +31,26 @@ module.exports = (plop) => {
       },
     ],
   });
+  plop.setGenerator("schema", {
+    description: "schema",
+    prompts: [
+      {
+        type: "input",
+        name: "name",
+        message: "schema name please",
+      },
+    ],
+    actions: [
+      {
+        type: "add",
+        path: "db/schema/{{camelCase name}}/index.ts",
+        templateFile: "plop-templates/schema/index.ts.hbs",
+      },
+      {
+        type: "append",
+        path: "db/schema/index.ts",
+        template: "export { {{camelCase name}} } from './{{camelCase name}}';",
+      },
+    ],
+  });
 };

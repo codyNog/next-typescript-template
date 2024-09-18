@@ -8,8 +8,6 @@ This directory contains web application by Next.js.
 bun dev
 ```
 
-and check [this](http://localhost:3000/v2/ja/admin/users) out
-
 ## plop
 
 Generate code in bulk with `bun plop {{action}}`.  

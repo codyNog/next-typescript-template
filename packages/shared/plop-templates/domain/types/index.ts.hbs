@@ -1,5 +1,6 @@
 import {z} from 'zod';
 
+// Create
 export const create{{pascalCase name}}ParamsSchema = z.object({})
 
 export type Create{{pascalCase name}}Params = z.infer<typeof create{{pascalCase name}}ParamsSchema>
@@ -7,7 +8,16 @@ export type Create{{pascalCase name}}Params = z.infer<typeof create{{pascalCase 
 export const create{{pascalCase name}}ReturnValueSchema = z.object({})
 
 export type Create{{pascalCase name}}ReturnValue = z.infer<typeof create{{pascalCase name}}ReturnValueSchema>
-    
+
+export const bulkCreate{{pascalCase name}}ParamsSchema = z.array(create{{pascalCase name}}ParamsSchema)
+
+export type BulkCreate{{pascalCase name}}Params = z.infer<typeof bulkCreate{{pascalCase name}}ParamsSchema>
+
+export const bulkCreate{{pascalCase name}}ReturnValueSchema = z.array(create{{pascalCase name}}ReturnValueSchema)
+
+export type BulkCreate{{pascalCase name}}ReturnValue = z.infer<typeof bulkCreate{{pascalCase name}}ReturnValueSchema>
+
+// Update
 export const update{{pascalCase name}}ParamsSchema = z.object({})
 
 export type Update{{pascalCase name}}Params = z.infer<typeof update{{pascalCase name}}ParamsSchema>
@@ -16,6 +26,15 @@ export const update{{pascalCase name}}ReturnValueSchema = z.object({})
 
 export type Update{{pascalCase name}}ReturnValue = z.infer<typeof update{{pascalCase name}}ReturnValueSchema>
 
+export const bulkUpdate{{pascalCase name}}ParamsSchema = z.array(update{{pascalCase name}}ParamsSchema)
+
+export type BulkUpdate{{pascalCase name}}Params = z.infer<typeof bulkUpdate{{pascalCase name}}ParamsSchema>
+
+export const bulkUpdate{{pascalCase name}}ReturnValueSchema = z.array(update{{pascalCase name}}ReturnValueSchema)
+
+export type BulkUpdate{{pascalCase name}}ReturnValue = z.infer<typeof bulkUpdate{{pascalCase name}}ReturnValueSchema>
+
+// Delete
 export const delete{{pascalCase name}}ParamsSchema = z.object({})
 
 export type Delete{{pascalCase name}}Params = z.infer<typeof delete{{pascalCase name}}ParamsSchema>
@@ -23,3 +42,11 @@ export type Delete{{pascalCase name}}Params = z.infer<typeof delete{{pascalCase 
 export const delete{{pascalCase name}}ReturnValueSchema = z.object({})
 
 export type Delete{{pascalCase name}}ReturnValue = z.infer<typeof delete{{pascalCase name}}ReturnValueSchema>
+
+export const bulkDelete{{pascalCase name}}ParamsSchema = z.object({})
+
+export type BulkDelete{{pascalCase name}}Params = z.infer<typeof bulkDelete{{pascalCase name}}ParamsSchema>
+
+export const bulkDelete{{pascalCase name}}ReturnValueSchema = z.object({})
+
+export type BulkDelete{{pascalCase name}}ReturnValue = z.infer<typeof bulkDelete{{pascalCase name}}ReturnValueSchema>

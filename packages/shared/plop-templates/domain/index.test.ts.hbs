@@ -1,0 +1,68 @@
+import { describe, expect, it } from "bun:test";
+import {
+    bulkCreate{{pascalCase name}},
+    bulkDelete{{pascalCase name}},
+    bulkUpdate{{pascalCase name}},
+    create{{pascalCase name}},
+    delete{{pascalCase name}},
+    read{{pascalCase name}}s,
+    update{{pascalCase name}},
+} from ".";
+import type {
+    BulkCreate{{pascalCase name}}Params,
+    BulkDelete{{pascalCase name}}Params,
+    BulkUpdate{{pascalCase name}}Params,
+    Create{{pascalCase name}}Params,
+    Delete{{pascalCase name}}Params,
+    Update{{pascalCase name}}Params,
+} from "./types";
+
+describe("domain/{{pascalCase name}}", async () => {
+    it("create", async () => {
+        const params: Create{{pascalCase name}}Params = {};
+        const {{camelCase name}} = await create{{pascalCase name}}(params);
+        expect({{camelCase name}}).toBeTruthy();
+    });
+
+    it("bulkCreate", async () => {
+        const params: BulkCreate{{pascalCase name}}Params = [
+            {},
+            {},
+        ];
+        const {{camelCase name}}s = await bulkCreate{{pascalCase name}}(params);
+        //expect({{camelCase name}}s).toHaveLength(2);
+    });
+
+    it("update", async () => {
+        const _prev = (await read{{pascalCase name}}s())[0];
+        const params: Update{{pascalCase name}}Params = {
+        };
+        const {{camelCase name}} = await update{{pascalCase name}}(params);
+        expect({{camelCase name}}).toStrictEqual(params);
+    });
+
+    it("bulkUpdate", async () => {
+        const prev = await read{{pascalCase name}}s();
+        const params: BulkUpdate{{pascalCase name}}Params = prev.map(({{camelCase name}}) => ({
+        }));
+        const {{camelCase name}}s = await bulkUpdate{{pascalCase name}}(params);
+        expect({{camelCase name}}s).toStrictEqual(params);
+    });
+
+    it("delete", async () => {
+        const prev = (await read{{pascalCase name}}s())[0];
+        const params: Delete{{pascalCase name}}Params = {};
+        await delete{{pascalCase name}}(params);
+        const {{camelCase name}}s = await read{{pascalCase name}}s();
+        expect({{camelCase name}}s).not.toContainEqual(prev);
+    });
+
+    it("bulkDelete", async () => {
+        const _prev = await read{{pascalCase name}}s();
+        const params: BulkDelete{{pascalCase name}}Params = {
+        };
+        await bulkDelete{{pascalCase name}}(params);
+        const {{camelCase name}}s = await read{{pascalCase name}}s();
+        expect({{camelCase name}}s).toHaveLength(0);
+    });
+});

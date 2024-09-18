@@ -1,0 +1,9 @@
+import { pgTable } from "drizzle-orm/pg-core";
+import { createInsertSchema, createSelectSchema } from "drizzle-zod";
+
+export const {{camelCase name}} = pgTable("{{camelCase name}}", {
+});
+
+export const insert{{pascalCase name}}Schema = createInsertSchema({{camelCase name}});
+
+export const select{{pascalCase name}}Schema = createSelectSchema({{camelCase name}});

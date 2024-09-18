@@ -1,13 +1,26 @@
-import type {Create{{pascalCase name}}Params, Create{{pascalCase name}}ReturnValue, Update{{pascalCase name}}Params, Update{{pascalCase name}}ReturnValue, Delete{{pascalCase name}}Params, Delete{{pascalCase name}}ReturnValue } from '../types';
+import type {Create{{pascalCase name}}Params, Create{{pascalCase name}}ReturnValue, Update{{pascalCase name}}Params, Update{{pascalCase name}}ReturnValue, Delete{{pascalCase name}}Params, Delete{{pascalCase name}}ReturnValue, 
+    BulkCreate{{pascalCase name}}Params, BulkCreate{{pascalCase name}}ReturnValue, BulkUpdate{{pascalCase name}}Params, BulkUpdate{{pascalCase name}}ReturnValue, BulkDelete{{pascalCase name}}Params, BulkDelete{{pascalCase name}}ReturnValue } from '../types';
 
+// Create
 const createParams: Create{{pascalCase name}}Params = {}
 const createReturnValue: Create{{pascalCase name}}ReturnValue = {}
 
+const bulkCreateParams: BulkCreate{{pascalCase name}}Params = []
+const bulkCreateReturnValue: BulkCreate{{pascalCase name}}ReturnValue = []
+
+// Update
 const updateParams: Update{{pascalCase name}}Params = {}
 const updateReturnValue: Update{{pascalCase name}}ReturnValue = {}
 
+const bulkUpdateParams: BulkUpdate{{pascalCase name}}Params = []
+const bulkUpdateReturnValue: BulkUpdate{{pascalCase name}}ReturnValue = []
+
+// Delete
 const deleteParams: Delete{{pascalCase name}}Params = {}
 const deleteReturnValue: Delete{{pascalCase name}}ReturnValue = {}
+
+const bulkDeleteParams: BulkDelete{{pascalCase name}}Params = []
+const bulkDeleteReturnValue: BulkDelete{{pascalCase name}}ReturnValue = []
 
 export const {{camelCase name}}Mock = {
     createParams,
@@ -15,5 +28,11 @@ export const {{camelCase name}}Mock = {
     updateParams,
     updateReturnValue,
     deleteParams,
-    deleteReturnValue
+    deleteReturnValue,
+    bulkCreateParams,
+    bulkCreateReturnValue,
+    bulkUpdateParams,
+    bulkUpdateReturnValue,
+    bulkDeleteParams,
+    bulkDeleteReturnValue
 }
