@@ -62,5 +62,8 @@
     "inquirer": "9.3.5"
   },
   "type": "module",
-  "workspaces": ["packages/*"]
+  "workspaces": ["packages/*"],
+  "dependencies": {
+    "next-auth": "^5.0.0-beta.22"
+  }
 }
