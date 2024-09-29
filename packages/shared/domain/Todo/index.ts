@@ -1,20 +1,20 @@
-import type {
-  CreateTodoParams,
-  CreateTodoReturnValue,
-  BulkCreateTodoParams,
-  BulkCreateTodoReturnValue,
-  BulkUpdateTodoParams,
-  BulkUpdateTodoReturnValue,
-  BulkDeleteTodoParams,
-  BulkDeleteTodoReturnValue,
-  UpdateTodoParams,
-  UpdateTodoReturnValue,
-  DeleteTodoParams,
-  DeleteTodoReturnValue,
-} from "./types";
+import { eq } from "drizzle-orm";
 import { db } from "../../db";
 import { todos } from "../../db/schema";
-import { eq } from "drizzle-orm";
+import type {
+  BulkCreateTodoParams,
+  BulkCreateTodoReturnValue,
+  BulkDeleteTodoParams,
+  BulkDeleteTodoReturnValue,
+  BulkUpdateTodoParams,
+  BulkUpdateTodoReturnValue,
+  CreateTodoParams,
+  CreateTodoReturnValue,
+  DeleteTodoParams,
+  DeleteTodoReturnValue,
+  UpdateTodoParams,
+  UpdateTodoReturnValue,
+} from "./types";
 
 export const createTodo = async (
   params: CreateTodoParams,
