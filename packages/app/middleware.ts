@@ -45,9 +45,6 @@ const addHeaders = (
     request.headers.get("accept-language") || "en-US,en;q=0.9";
   response.headers.set("X-Accept-Language", acceptLanguage);
 
-  const clientIP = request.ip || "Unknown";
-  response.headers.set("X-Forwarded-For", clientIP);
-
   response.headers.set("X-Request-Method", request.method);
   response.headers.set("X-Request-URL", request.url);
 

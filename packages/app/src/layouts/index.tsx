@@ -1,9 +1,11 @@
 import { I18nProviderClient } from "@/locales/client";
-import { getCurrentLocale } from "@/locales/server";
 import type { ReactNode } from "react";
 
-const Layout = async ({ children }: { children: ReactNode }) => {
-  const locale = getCurrentLocale();
+const Layout = async ({
+  children,
+  params,
+}: { params: Promise<{ locale: string }>; children: ReactNode }) => {
+  const { locale } = await params;
 
   return (
     <html lang="en">

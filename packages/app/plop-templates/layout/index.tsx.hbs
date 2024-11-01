@@ -2,9 +2,10 @@ import { I18nProviderClient } from "@/locales/client";
 import type { ReactNode } from "react";
 import _styles from "./index.module.css";
 
-type LayoutProps = { params: { locale: string }; children: ReactNode };
+type LayoutProps = { Promise<{ locale: string }>; children: ReactNode };
 
-const Layout = ({ params: { locale }, children }: LayoutProps) => {
+const Layout = async ({ params, children }: LayoutProps) => {
+  const { locale } = await params;
   return <I18nProviderClient locale={locale}>{children}</I18nProviderClient>;
 };
 
