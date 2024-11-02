@@ -24,14 +24,12 @@ const addHeaders = (
     "Permissions-Policy",
     "camera=(), microphone=(), geolocation=()",
   );
-
-  // Content Security Policy (CSP)
+  // Content-Security-Policy
   response.headers.set(
     "Content-Security-Policy",
     "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self' data:;",
   );
-
-  // HSTS (HTTP Strict Transport Security)
+  // Strict-Transport-Security
   response.headers.set(
     "Strict-Transport-Security",
     "max-age=31536000; includeSubDomains; preload",
