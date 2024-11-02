@@ -10,6 +10,7 @@ const convertCsvToJson = (csvFilePath) => {
   parse(csvFile, {
     header: true,
     skipEmptyLines: true,
+    comments: false,
     complete: (result) => {
       // 各列ごとのJSONデータを格納するオブジェクト
       const jsonDataObject = {};
@@ -27,8 +28,7 @@ const convertCsvToJson = (csvFilePath) => {
 
       // 各列に対応するJSONをファイルに書き込む
       for (const key of Object.keys(jsonDataObject)) {
-        if (key === "key") continue;
-        const jsonFilePath = `./gen/i18n/${key}.ts`;
+        const jsonFilePath = `./packages/gen/i18n/${key}.ts`;
         fs.writeFileSync(
           jsonFilePath,
           `export default ${JSON.stringify(jsonDataObject[key])} as const;`,

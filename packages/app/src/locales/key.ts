@@ -1,5 +1,5 @@
 // biome-ignore lint/style/useImportType: <explanation>
-import key from "@/gen/i18n/key";
+import key from "gen/i18n/key";
 
 // Add keys for passing dynamic values
 type DynamicKey = "preferences.userIp.confirmation" | "";
