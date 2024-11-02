@@ -12,22 +12,26 @@ module.exports = (plop) => {
       {
         type: "add",
         path: "domain/{{pascalCase name}}/index.ts",
-        templateFile: "plop-templates/domain/index.ts.hbs",
+        templateFile:
+          "../../plop-templates/packages/shared/domain/index.ts.hbs",
       },
       {
         type: "add",
         path: "domain/{{pascalCase name}}/index.test.ts",
-        templateFile: "plop-templates/domain/index.test.ts.hbs",
+        templateFile:
+          "../../plop-templates/packages/shared/domain/index.test.ts.hbs",
       },
       {
         type: "add",
         path: "domain/{{pascalCase name}}/types/index.ts",
-        templateFile: "plop-templates/domain/types/index.ts.hbs",
+        templateFile:
+          "../../plop-templates/packages/shared/domain/types/index.ts.hbs",
       },
       {
         type: "add",
         path: "domain/{{pascalCase name}}/mock/index.ts",
-        templateFile: "plop-templates/domain/mock/index.ts.hbs",
+        templateFile:
+          "../../plop-templates/packages/shared/domain/mock/index.ts.hbs",
       },
     ],
   });
@@ -44,7 +48,8 @@ module.exports = (plop) => {
       {
         type: "add",
         path: "db/schema/{{camelCase name}}/index.ts",
-        templateFile: "plop-templates/schema/index.ts.hbs",
+        templateFile:
+          "../../plop-templates/packages/shared/schema/index.ts.hbs",
       },
       {
         type: "append",

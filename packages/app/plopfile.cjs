@@ -14,38 +14,44 @@ module.exports = (plop) => {
       {
         type: "add",
         path: "src/components/{{pascalCase name}}/index.tsx",
-        templateFile: "plop-templates/client-component/index.tsx.hbs",
+        templateFile:
+          "../../plop-templates/packages/app/client-component/index.tsx.hbs",
       },
       {
         type: "add",
         path: "src/components/{{pascalCase name}}/hooks/index.ts",
-        templateFile: "plop-templates/client-component/hooks/index.ts.hbs",
+        templateFile:
+          "../../plop-templates/packages/app/client-component/hooks/index.ts.hbs",
       },
       {
         type: "add",
         path: "src/components/{{pascalCase name}}/modules/index.ts",
-        templateFile: "plop-templates/client-component/modules/index.ts.hbs",
+        templateFile:
+          "../../plop-templates/packages/app/client-component/modules/index.ts.hbs",
       },
       {
         type: "add",
         path: "src/components/{{pascalCase name}}/modules/index.test.ts",
         templateFile:
-          "plop-templates/client-component/modules/index.test.ts.hbs",
+          "../../plop-templates/packages/app/client-component/modules/index.test.ts.hbs",
       },
       {
         type: "add",
         path: "src/components/{{pascalCase name}}/types/index.ts",
-        templateFile: "plop-templates/client-component/types/index.ts.hbs",
+        templateFile:
+          "../../plop-templates/packages/app/client-component/types/index.ts.hbs",
       },
       {
         type: "add",
         path: "src/components/{{pascalCase name}}/index.stories.tsx",
-        templateFile: "plop-templates/client-component/index.stories.tsx.hbs",
+        templateFile:
+          "../../plop-templates/packages/app/client-component/index.stories.tsx.hbs",
       },
       {
         type: "add",
         path: "src/components/{{pascalCase name}}/index.module.css",
-        templateFile: "plop-templates/client-component/index.module.css.hbs",
+        templateFile:
+          "../../plop-templates/packages/app/client-component/index.module.css.hbs",
       },
     ],
   });
@@ -63,17 +69,20 @@ module.exports = (plop) => {
       {
         type: "add",
         path: "src/components/{{pascalCase name}}/index.tsx",
-        templateFile: "plop-templates/server-component/index.tsx.hbs",
+        templateFile:
+          "../../plop-templates/packages/app/server-component/index.tsx.hbs",
       },
       {
         type: "add",
         path: "src/components/{{pascalCase name}}/index.stories.tsx",
-        templateFile: "plop-templates/server-component/index.stories.tsx.hbs",
+        templateFile:
+          "../../plop-templates/packages/app/server-component/index.stories.tsx.hbs",
       },
       {
         type: "add",
         path: "src/components/{{pascalCase name}}/index.module.css",
-        templateFile: "plop-templates/server-component/index.module.css.hbs",
+        templateFile:
+          "../../plop-templates/packages/app/server-component/index.module.css.hbs",
       },
     ],
   });
@@ -92,17 +101,18 @@ module.exports = (plop) => {
       {
         type: "add",
         path: "app/[locale]/{{lowerCase name}}/page.ts",
-        templateFile: "plop-templates/page/page.ts.hbs",
+        templateFile: "../../plop-templates/packages/app/page/page.ts.hbs",
       },
       {
         type: "add",
         path: "src/page-components/{{lowerCase name}}/index.tsx",
-        templateFile: "plop-templates/page/index.tsx.hbs",
+        templateFile: "../../plop-templates/packages/app/page/index.tsx.hbs",
       },
       {
         type: "add",
         path: "src/page-components/{{lowerCase name}}/index.module.css",
-        templateFile: "plop-templates/page/index.module.css.hbs",
+        templateFile:
+          "../../plop-templates/packages/app/page/index.module.css.hbs",
       },
     ],
   });
@@ -120,37 +130,43 @@ module.exports = (plop) => {
       {
         type: "add",
         path: "src/components/{{pascalCase name}}Form/index.tsx",
-        templateFile: "plop-templates/form/index.tsx.hbs",
+        templateFile: "../../plop-templates/packages/app/form/index.tsx.hbs",
       },
       {
         type: "add",
         path: "src/components/{{pascalCase name}}Form/hooks/index.ts",
-        templateFile: "plop-templates/form/hooks/index.ts.hbs",
+        templateFile:
+          "../../plop-templates/packages/app/form/hooks/index.ts.hbs",
       },
       {
         type: "add",
         path: "src/components/{{pascalCase name}}Form/modules/index.ts",
-        templateFile: "plop-templates/form/modules/index.ts.hbs",
+        templateFile:
+          "../../plop-templates/packages/app/form/modules/index.ts.hbs",
       },
       {
         type: "add",
         path: "src/components/{{pascalCase name}}Form/modules/index.test.ts",
-        templateFile: "plop-templates/form/modules/index.test.ts.hbs",
+        templateFile:
+          "../../plop-templates/packages/app/form/modules/index.test.ts.hbs",
       },
       {
         type: "add",
         path: "src/components/{{pascalCase name}}Form/types/index.ts",
-        templateFile: "plop-templates/form/types/index.ts.hbs",
+        templateFile:
+          "../../plop-templates/packages/app/form/types/index.ts.hbs",
       },
       {
         type: "add",
         path: "src/components/{{pascalCase name}}Form/index.stories.tsx",
-        templateFile: "plop-templates/form/index.stories.tsx.hbs",
+        templateFile:
+          "../../plop-templates/packages/app/form/index.stories.tsx.hbs",
       },
       {
         type: "add",
         path: "src/components/{{pascalCase name}}Form/index.module.css",
-        templateFile: "plop-templates/form/index.module.css.hbs",
+        templateFile:
+          "../../plop-templates/packages/app/form/index.module.css.hbs",
       },
     ],
   });
@@ -168,27 +184,31 @@ module.exports = (plop) => {
       {
         type: "add",
         path: "src/components/{{pascalCase name}}Table/index.tsx",
-        templateFile: "plop-templates/table/index.tsx.hbs",
+        templateFile: "../../plop-templates/packages/app/table/index.tsx.hbs",
       },
       {
         type: "add",
         path: "src/components/{{pascalCase name}}Table/types/index.ts",
-        templateFile: "plop-templates/table/types/index.ts.hbs",
+        templateFile:
+          "../../plop-templates/packages/app/table/types/index.ts.hbs",
       },
       {
         type: "add",
         path: "src/components/{{pascalCase name}}Table/component.tsx",
-        templateFile: "plop-templates/table/component.tsx.hbs",
+        templateFile:
+          "../../plop-templates/packages/app/table/component.tsx.hbs",
       },
       {
         type: "add",
         path: "src/components/{{pascalCase name}}Table/index.stories.tsx",
-        templateFile: "plop-templates/table/index.stories.tsx.hbs",
+        templateFile:
+          "../../plop-templates/packages/app/table/index.stories.tsx.hbs",
       },
       {
         type: "add",
         path: "src/components/{{pascalCase name}}Table/index.module.css",
-        templateFile: "plop-templates/table/index.module.css.hbs",
+        templateFile:
+          "../../plop-templates/packages/app/table/index.module.css.hbs",
       },
     ],
   });
@@ -205,22 +225,25 @@ module.exports = (plop) => {
       {
         type: "add",
         path: "src/actions/{{name}}/index.ts",
-        templateFile: "plop-templates/action/index.ts.hbs",
+        templateFile: "../../plop-templates/packages/app/action/index.ts.hbs",
       },
       {
         type: "add",
         path: "src/actions/{{name}}/index.test.ts",
-        templateFile: "plop-templates/action/index.test.ts.hbs",
+        templateFile:
+          "../../plop-templates/packages/app/action/index.test.ts.hbs",
       },
       {
         type: "add",
         path: "src/actions/{{name}}/types/index.ts",
-        templateFile: "plop-templates/action/types/index.ts.hbs",
+        templateFile:
+          "../../plop-templates/packages/app/action/types/index.ts.hbs",
       },
       {
         type: "add",
         path: "src/actions/{{name}}/mock/index.ts",
-        templateFile: "plop-templates/action/mock/index.ts.hbs",
+        templateFile:
+          "../../plop-templates/packages/app/action/mock/index.ts.hbs",
       },
     ],
   });
@@ -237,17 +260,18 @@ module.exports = (plop) => {
       {
         type: "add",
         path: "src/layouts/{{name}}/index.tsx",
-        templateFile: "plop-templates/layout/index.tsx.hbs",
+        templateFile: "../../plop-templates/packages/app/layout/index.tsx.hbs",
       },
       {
         type: "add",
         path: "src/layouts/{{name}}/index.module.css",
-        templateFile: "plop-templates/layout/index.module.css.hbs",
+        templateFile:
+          "../../plop-templates/packages/app/layout/index.module.css.hbs",
       },
       {
         type: "add",
         path: "app/[locale]/{{name}}/layout.ts",
-        templateFile: "plop-templates/layout/layout.ts.hbs",
+        templateFile: "../../plop-templates/packages/app/layout/layout.ts.hbs",
       },
     ],
   });
@@ -264,22 +288,23 @@ module.exports = (plop) => {
       {
         type: "add",
         path: "app/api/{{name}}/route.ts",
-        templateFile: "plop-templates/api/route.ts.hbs",
+        templateFile: "../../plop-templates/packages/app/api/route.ts.hbs",
       },
       {
         type: "add",
         path: "src/api/{{name}}/index.ts",
-        templateFile: "plop-templates/api/index.ts.hbs",
+        templateFile: "../../plop-templates/packages/app/api/index.ts.hbs",
       },
       {
         type: "add",
         path: "src/api/{{name}}/hooks.ts",
-        templateFile: "plop-templates/api/hooks.ts.hbs",
+        templateFile: "../../plop-templates/packages/app/api/hooks.ts.hbs",
       },
       {
         type: "add",
         path: "src/api/{{name}}/types/index.ts",
-        templateFile: "plop-templates/api/types/index.ts.hbs",
+        templateFile:
+          "../../plop-templates/packages/app/api/types/index.ts.hbs",
       },
     ],
   });
