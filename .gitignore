@@ -182,3 +182,7 @@ dist
 
 # storybook
 **/storybook-static
+
+# packages/gen
+
+packages/gen

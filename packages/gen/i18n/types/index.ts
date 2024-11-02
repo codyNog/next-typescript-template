@@ -1,7 +1,7 @@
 // biome-ignore lint/style/useImportType: <explanation>
-import key from "gen/i18n/key";
+import key from "../key";
 
 // Add keys for passing dynamic values
-type DynamicKey = "preferences.userIp.confirmation" | "";
+type DynamicKey = "";
 
 export type I18nKey = Exclude<keyof typeof key, DynamicKey>;

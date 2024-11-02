@@ -10,7 +10,7 @@ const convertCsvToJson = (csvFilePath) => {
   parse(csvFile, {
     header: true,
     skipEmptyLines: true,
-    comments: false,
+    comments: true,
     complete: (result) => {
       // 各列ごとのJSONデータを格納するオブジェクト
       const jsonDataObject = {};
