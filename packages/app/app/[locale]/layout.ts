@@ -1,3 +1,3 @@
-import Layout from "@/layouts";
+import Layout from "../../src/layouts";
 
 export default Layout;

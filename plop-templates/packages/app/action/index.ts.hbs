@@ -1,6 +1,6 @@
 import { {{ name }}ActionParamsSchema, {{ name }}ActionReturnValueSchema } from "./types";
 import type { {{ pascalCase name }}ActionParams, {{ pascalCase name }}ActionReturnValue } from "./types";
-import { actionClient } from "@/libs/server-actions";
+import { actionClient } from "shared/libs/server-functions";
 import { IS_STORYBOOK } from "shared/constants/env";
 import { {{ name }}ActionMock } from "./mock";
 
@@ -21,8 +21,6 @@ export const {{ name }}Action = async (
   if(IS_STORYBOOK) return {{ name }}ActionMock.returnValue;
 
   const data = (await action(params))?.data;
-
-  if (!data) throw new Error("data not found");
 
   return {{ name }}ActionReturnValueSchema.parse(data);
 };

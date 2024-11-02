@@ -1,4 +1,4 @@
-import { I18nProviderClient } from "../locales/client";
+import { I18nProviderClient } from "shared/libs/i18n/client";
 import type { ReactNode } from "react";
 
 const Layout = async ({

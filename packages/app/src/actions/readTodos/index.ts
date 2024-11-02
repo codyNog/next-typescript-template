@@ -1,4 +1,4 @@
-import { actionClient } from "../../libs/server-actions";
+import { actionClient } from "shared/libs/server-functions";
 import { IS_STORYBOOK } from "shared/constants/env";
 import { db } from "shared/db";
 import { readTodosActionMock } from "./mock";

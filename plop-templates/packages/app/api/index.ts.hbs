@@ -1,11 +1,11 @@
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
-import type { {{pascalCase name}}ReturnValue} from "@/api/{{name}}/types";
+import type { {{pascalCase name}}APIReturnValue} from "./types";
 
 /**
  * GET /api/{{name}}
  */
-export const GET = async (request: NextRequest): Promise<NextResponse<{{pascalCase name}}ReturnValue>> => {
+export const GET = async (request: NextRequest): Promise<NextResponse<{{pascalCase name}}APIReturnValue>> => {
   const { searchParams } = new URL(request.url);
   // fix this
   const _name = searchParams.get("name");

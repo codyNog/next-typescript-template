@@ -1,13 +1,30 @@
 import useSWR from 'swr';
-import { {{name}}ParamsSchema } from "@/api/{{name}}/types";
-import type { {{pascalCase name}}Params, {{pascalCase name}}ReturnValue } from "@/api/{{name}}/types";
+import qs from 'qs';
+import { {{camelCase name}}APIParamsSchema } from "@/api/{{name}}/types";
+import type { {{pascalCase name}}APIParams, {{pascalCase name}}APIReturnValue } from "@/api/{{name}}/types";
 
-const fetcher = async (url: string) => (await fetch(url)).json()
+const fetcher = async (url: string) => {
+  const response = await fetch(url);
+  if (!response.ok) {
+    throw new Error('An error occurred while fetching the data.');
+  }
+  return response.json();
+};
 
 /**
  * SWR hook for GET /api/{{name}}
  */
-export const use{{pascalCase name}}SWR = (params: {{pascalCase name}}Params) => {
-  {{name}}ParamsSchema.parse(params);
-  return useSWR<{{pascalCase name}}ReturnValue>('/api/{{name}}',fetcher);
+export const use{{pascalCase name}}SWR = (params: {{pascalCase name}}APIParams) => {
+  {{camelCase name}}APIParamsSchema.parse(params);
+  const queryString = qs.stringify(params, { 
+    arrayFormat: 'repeat',
+    addQueryPrefix: true,
+    skipNulls: true,
+  });
+  const path = `/api/{{name}}${queryString}`;
+  
+  return useSWR<{{pascalCase name}}APIReturnValue>(
+    path,
+    fetcher
+  );
 };

@@ -18,6 +18,11 @@
         "name": "next"
       }
     ],
+    "paths": {
+      "@/api/*": ["./src/api/*"],
+      "@/page-components/*": ["./src/page-components/*"],
+      "@/layouts/*": ["./src/layouts/*"],
+    }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
   "exclude": ["node_modules"]

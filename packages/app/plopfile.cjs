@@ -297,7 +297,7 @@ module.exports = (plop) => {
       },
       {
         type: "add",
-        path: "src/api/{{name}}/hooks.ts",
+        path: "src/hooks/api/{{name}}/hooks.ts",
         templateFile: "../../plop-templates/packages/app/api/hooks.ts.hbs",
       },
       {

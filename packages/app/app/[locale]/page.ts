@@ -1,3 +1,3 @@
-import Page from "@/page-components";
+import Page from "../../src/page-components";
 
 export default Page;

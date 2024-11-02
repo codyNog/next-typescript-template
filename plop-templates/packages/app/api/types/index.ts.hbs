@@ -1,11 +1,11 @@
 import {z} from "zod"
 
-export const {{name}}ParamsSchema = z.object({})
+export const {{camelCase name}}APIParamsSchema = z.object({})
 
-export type {{pascalCase name}}Params = z.infer<typeof {{name}}ParamsSchema>
+export type {{pascalCase name}}APIParams = z.infer<typeof {{camelCase name}}APIParamsSchema>
 
-export const {{name}}ReturnValueSchema = z.object({
+export const {{camelCase name}}APIReturnValueSchema = z.object({
     message: z.string()
 })
 
-export type {{pascalCase name}}ReturnValue = z.infer<typeof {{name}}ReturnValueSchema>
+export type {{pascalCase name}}APIReturnValue = z.infer<typeof {{camelCase name}}APIReturnValueSchema>
