@@ -1,13 +1,17 @@
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
-import type { {{pascalCase name}}APIReturnValue} from "./types";
+import type { {{pascalCase name}}APIReturnValue, {{pascalCase name}}APIParams } from "./types";
+import { {{camelCase name}}APIParamsSchema } from "./types";
+import { searchParamsToObject } from "shared/libs/queryParams";
+
+// Since server functions can perform other actions, this is intended to be a list display API from client components only.
 
 /**
  * GET /api/{{name}}
  */
 export const GET = async (request: NextRequest): Promise<NextResponse<{{pascalCase name}}APIReturnValue>> => {
-  const { searchParams } = new URL(request.url);
   // fix this
-  const _name = searchParams.get("name");
+  const searchParamsObject = searchParamsToObject(request.nextUrl.searchParams);
+  const _params: {{pascalCase name}}APIParams = {{camelCase name}}APIParamsSchema.parse(searchParamsObject);
   return NextResponse.json({ message: 'Hello, World!' })
 }

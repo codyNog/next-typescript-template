@@ -3,8 +3,7 @@
 /**
  * fix or remove this type
  */
-// biome-ignore lint:
-type Params = {};
+type Params = { locale: string };
 
 /**
  * fix or remove this type
@@ -13,14 +12,15 @@ type Params = {};
 type SearchParams = {};
 
 type Props = {
-  params: Params;
+  params: Promise<Params>;
+  searchParams: Promise<SearchParams>;
 };
 
 /**
  * describe this page's features
  */
-const Page = async (_props: Props) => {
-  return <div>Page</div>;
+const Page = async ({ params: _, searchParams: __ }: Props) => {
+  return "Page";
 };
 
 export default Page;

@@ -4,8 +4,9 @@ import _styles from "./index.module.css";
 /**
  * fix or remove this type
  */
- // biome-ignore lint:
-type Params = {}
+type Params = {
+  locale: string;
+}
 
 /**
  * fix or remove this type
@@ -14,15 +15,15 @@ type Params = {}
 type SearchParams = {}
 
 type Props = {
-  params: Params;
-  searchParams: SearchParams;
+  params: Promise<Params>;
+  searchParams: Promise<SearchParams>;
 }
 
 /**
  * describe this page's features
  */
-const {{pascalCase name}}Page = async (_props: Props) => {
-  return <div>{{pascalCase name}}Page</div>
+const {{pascalCase name}}Page = async ({params: _, searchParams: __}: Props) => {
+  return {{pascalCase name}}Page
 };
 
 export default {{pascalCase name}}Page;
