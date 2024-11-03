@@ -4,13 +4,11 @@
     "gen/**",
     "packages/app/middleware/index.ts",
     "**/test.setup.ts",
-    "packages/shared/prisma/seed/**"
   ],
   "ignoreDependencies": [
     "@markuplint/*",
     "shared",
     "npm-run-all",
-    "zod-prisma-types",
     "happy-dom",
     "@happy-dom/global-registrator",
     "openapi-typescript"

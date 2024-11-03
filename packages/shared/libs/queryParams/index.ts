@@ -40,6 +40,8 @@ export const getArrayFromQueryParams = (
   return [param];
 };
 
-export const searchParamsToObject = (searchParams: URLSearchParams): Record<string, string> => {
+export const searchParamsToObject = (
+  searchParams: URLSearchParams,
+): Record<string, string> => {
   return Object.fromEntries(searchParams.entries());
-}
+};
