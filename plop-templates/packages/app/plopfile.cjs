@@ -229,12 +229,6 @@ module.exports = (plop) => {
       },
       {
         type: "add",
-        path: "src/actions/{{name}}/index.test.ts",
-        templateFile:
-          "../../plop-templates/packages/app/action/index.test.ts.hbs",
-      },
-      {
-        type: "add",
         path: "src/actions/{{name}}/types/index.ts",
         templateFile:
           "../../plop-templates/packages/app/action/types/index.ts.hbs",

@@ -1,19 +1,24 @@
 import { eq } from "drizzle-orm";
 import { db } from "../../db";
 import { todos } from "../../db/schema";
-import type {
-  BulkCreateTodoParams,
-  BulkCreateTodoReturnValue,
-  BulkDeleteTodoParams,
-  BulkDeleteTodoReturnValue,
-  BulkUpdateTodoParams,
-  BulkUpdateTodoReturnValue,
-  CreateTodoParams,
-  CreateTodoReturnValue,
-  DeleteTodoParams,
-  DeleteTodoReturnValue,
-  UpdateTodoParams,
-  UpdateTodoReturnValue,
+import { readTodosParamsToQuery } from "./modules";
+import {
+  type BulkCreateTodoParams,
+  type BulkCreateTodoReturnValue,
+  type BulkDeleteTodoParams,
+  type BulkDeleteTodoReturnValue,
+  type BulkUpdateTodoParams,
+  type BulkUpdateTodoReturnValue,
+  type CreateTodoParams,
+  type CreateTodoReturnValue,
+  type DeleteTodoParams,
+  type DeleteTodoReturnValue,
+  type ReadTodoParams,
+  type ReadTodosParams,
+  type UpdateTodoParams,
+  type UpdateTodoReturnValue,
+  bulkCreateTodoReturnValueSchema,
+  createTodoReturnValueSchema,
 } from "./types";
 
 export const createTodo = async (
@@ -24,7 +29,7 @@ export const createTodo = async (
     .values({ ...params })
     .returning();
 
-  return todo[0];
+  return createTodoReturnValueSchema.parse(todo[0]);
 };
 
 export const bulkCreateTodo = async (
@@ -32,18 +37,23 @@ export const bulkCreateTodo = async (
 ): Promise<BulkCreateTodoReturnValue> => {
   const list = await db.insert(todos).values(params).returning();
 
-  return list;
+  return bulkCreateTodoReturnValueSchema.parse(list);
 };
 
-/**
- * Read all todos
- * This is created for testing purposes.
- * In reality, the required types may differ depending on the calling component,
- * so detailed implementation is not provided here.
- */
-export const readTodos = async () => {
-  const todos = await db.query.todos.findMany();
+export const readTodo = async (params: ReadTodoParams) => {
+  const todo = await db.query.todos.findFirst({
+    where: eq(todos.id, params.id),
+  });
 
+  if (!todo) throw new Error("Todo not found");
+
+  return todo;
+};
+
+export const readTodos = async (params: ReadTodosParams) => {
+  const query = readTodosParamsToQuery(params);
+
+  const todos = await db.query.todos.findMany(query);
   return todos;
 };
 

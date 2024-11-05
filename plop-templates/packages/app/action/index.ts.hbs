@@ -22,5 +22,7 @@ export const {{ name }}Action = async (
 
   const data = (await action(params))?.data;
 
+  if(!data) throw new Error("No data returned from action");
+
   return {{ name }}ActionReturnValueSchema.parse(data);
 };

@@ -64,6 +64,6 @@
   "type": "module",
   "workspaces": ["packages/*"],
   "dependencies": {
-    "next-auth": "^5.0.0-beta.22"
+    "zod": "^3.23.8"
   }
 }

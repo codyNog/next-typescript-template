@@ -1,1 +1,1 @@
-export { todos } from "./todos";
+export { todos, todosRelations } from "./todos";

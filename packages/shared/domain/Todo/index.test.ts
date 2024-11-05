@@ -21,7 +21,7 @@ describe("domain/Todo", async () => {
   it("create", async () => {
     const params: CreateTodoParams = { todoName: "test", done: false };
     const todo = await createTodo(params);
-    expect(todo).toBeTruthy();
+    expect(todo).toMatchObject(params);
   });
 
   it("bulkCreate", async () => {
@@ -34,42 +34,48 @@ describe("domain/Todo", async () => {
   });
 
   it("update", async () => {
-    const prev = (await readTodos())[0];
+    const prev = (await readTodos({}))[0];
+    console.log(prev);
     const updateParams: UpdateTodoParams = {
       id: prev.id,
       todoName: "update",
       done: true,
     };
     const todo = await updateTodo(updateParams);
-    expect(todo).toStrictEqual(updateParams);
+    expect(todo).toMatchObject(updateParams);
   });
 
   it("bulkUpdate", async () => {
-    const prev = await readTodos();
+    const prev = await readTodos({});
     const updateParams: BulkUpdateTodoParams = prev.map((todo) => ({
       id: todo.id,
       todoName: "update",
       done: true,
     }));
     const todos = await bulkUpdateTodo(updateParams);
-    expect(todos).toStrictEqual(updateParams);
+    for (const todo of todos) {
+      const target = updateParams.find((t) => t.id === todo.id);
+      expect(target).toBeTruthy();
+      if (!target) throw new Error("target should be defined");
+      expect(todo).toMatchObject(target);
+    }
   });
 
   it("delete", async () => {
-    const prev = (await readTodos())[0];
+    const prev = (await readTodos({}))[0];
     const params: DeleteTodoParams = { id: prev.id };
     await deleteTodo(params);
-    const todos = await readTodos();
+    const todos = await readTodos({});
     expect(todos).not.toContainEqual(prev);
   });
 
   it("bulkDelete", async () => {
-    const prev = await readTodos();
+    const prev = await readTodos({});
     const deleteParams: BulkDeleteTodoParams = {
       ids: prev.map(({ id }) => id),
     };
     await bulkDeleteTodo(deleteParams);
-    const todos = await readTodos();
+    const todos = await readTodos({});
     expect(todos).toHaveLength(0);
   });
 });

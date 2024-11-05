@@ -18,20 +18,23 @@
     "gen": "workspace:*",
     "next-international": "^1.3.1",
     "openapi-typescript-fetch": "^2.0.0",
-    "pg": "^8.13.1",
     "postgres": "^3.4.5",
     "qs": "^6.13.0",
-    "uuid": "^11.0.2",
-    "zod": "^3.23.8"
+    "uuid": "^11.0.2"
   },
   "scripts": {
-    "test": "bun run --bun run-p test:*",
+    "build-check": "tsc --noEmit",
+    "test": "NODE_ENV=test bun test:setup && bun test:unit && bun test:cleanup",
     "test:unit": "bun test",
+    "test:setup": "docker compose up test_db -d && bun wait:db && bun db:migrate && bun db:seed",
+    "test:cleanup": "docker compose stop test_db",
+    "wait:db": "bun test index.ts",
     "plop": "plop",
     "postplop": "biome format --write .",
     "update": "npm-check-updates -u",
-    "db:generate": "drizzle-kit generate",
+    "db:generate": "drizzle-kit generate --config=drizzle.config.ts",
     "db:push": "drizzle-kit push",
-    "db:migrate": "drizzle-kit migrate"
+    "db:migrate": "drizzle-kit migrate",
+    "db:seed": "bun db/seed/index.ts"
   }
 }

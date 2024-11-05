@@ -12,7 +12,8 @@
     "**/tsconfig.tsbuildinfo",
     "docker/**",
     "docker-compose.yml",
-    "packages/shared/constants/env/**"
+    "packages/shared/constants/env/**",
+    "makefile"
   ],
   "allowCompoundWords": true,
   "dictionaryDefinitions": [],

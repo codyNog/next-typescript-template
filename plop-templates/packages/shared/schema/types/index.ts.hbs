@@ -1,0 +1,9 @@
+import { createInsertSchema, createSelectSchema } from "drizzle-zod";
+import { {{camelCase name}} } from "..";
+import type { z } from "zod";
+
+export const insert{{pascalCase name}}Schema = createInsertSchema({{camelCase name}});
+export type Insert{{pascalCase name}}Schema = z.infer<typeof insert{{pascalCase name}}Schema>;
+
+export const select{{pascalCase name}}Schema = createSelectSchema({{camelCase name}});
+export type Select{{pascalCase name}}Schema = z.infer<typeof select{{pascalCase name}}Schema>;

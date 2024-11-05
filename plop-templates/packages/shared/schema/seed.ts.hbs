@@ -1,0 +1,9 @@
+import { db } from "../..";
+import { {{camelCase name}} } from "../../schema/{{camelCase name}}";
+import type { Insert{{pascalCase name}}Schema } from "../../schema/{{camelCase name}}/types";
+
+const seed: Insert{{pascalCase name}}Schema[] = [];
+
+export const seed{{pascalCase name}} = async () => {
+  await db.insert({{camelCase name}}).values(seed);
+};

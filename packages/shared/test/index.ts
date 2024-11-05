@@ -1,25 +1,29 @@
-import {
-  PostgreSqlContainer,
-  type StartedPostgreSqlContainer,
-} from "@testcontainers/postgresql";
-import {
-  DATABASE_NAME,
-  DATABASE_PASSWORD,
-  DATABASE_PORT,
-  DATABASE_USER,
-} from "../constants/env";
+import postgres from "postgres";
+import { DATABASE_URL } from "../constants/env";
 
-export const setupTestDB = async () => {
-  const container = await new PostgreSqlContainer()
-    .withDatabase(DATABASE_NAME)
-    .withUsername(DATABASE_USER)
-    .withPassword(DATABASE_PASSWORD)
-    .withExposedPorts(DATABASE_PORT)
-    .start();
+const MAX_RETRIES = 30;
+const RETRY_INTERVAL = 1000; // 1 second
 
-  return container;
-};
+async function waitForDatabase() {
+  let retries = 0;
 
-export const teardownTestDB = async (container: StartedPostgreSqlContainer) => {
-  await container.stop();
-};
+  while (retries < MAX_RETRIES) {
+    try {
+      const sql = postgres(DATABASE_URL);
+      await sql`SELECT 1`;
+      console.log("Database is ready!");
+      await sql.end();
+      process.exit(0);
+      // biome-ignore lint/correctness/noUnusedVariables: <explanation>
+    } catch (error) {
+      console.log(`Waiting for database... (${retries + 1}/${MAX_RETRIES})`);
+      retries++;
+      await new Promise((resolve) => setTimeout(resolve, RETRY_INTERVAL));
+    }
+  }
+
+  console.error("Failed to connect to database");
+  process.exit(1);
+}
+
+waitForDatabase();

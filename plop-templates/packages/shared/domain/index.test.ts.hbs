@@ -29,12 +29,12 @@ describe("domain/{{pascalCase name}}", async () => {
             {},
             {},
         ];
-        const {{camelCase name}}s = await bulkCreate{{pascalCase name}}(params);
+        const _{{camelCase name}}s = await bulkCreate{{pascalCase name}}(params);
         //expect({{camelCase name}}s).toHaveLength(2);
     });
 
     it("update", async () => {
-        const _prev = (await read{{pascalCase name}}s())[0];
+        const _prev = (await read{{pascalCase name}}s({}))[0];
         const params: Update{{pascalCase name}}Params = {
         };
         const {{camelCase name}} = await update{{pascalCase name}}(params);
@@ -42,7 +42,7 @@ describe("domain/{{pascalCase name}}", async () => {
     });
 
     it("bulkUpdate", async () => {
-        const prev = await read{{pascalCase name}}s();
+        const prev = await read{{pascalCase name}}s({});
         const params: BulkUpdate{{pascalCase name}}Params = prev.map(({{camelCase name}}) => ({
         }));
         const {{camelCase name}}s = await bulkUpdate{{pascalCase name}}(params);
@@ -50,19 +50,19 @@ describe("domain/{{pascalCase name}}", async () => {
     });
 
     it("delete", async () => {
-        const prev = (await read{{pascalCase name}}s())[0];
+        const prev = (await read{{pascalCase name}}s({}))[0];
         const params: Delete{{pascalCase name}}Params = {};
         await delete{{pascalCase name}}(params);
-        const {{camelCase name}}s = await read{{pascalCase name}}s();
+        const {{camelCase name}}s = await read{{pascalCase name}}s({});
         expect({{camelCase name}}s).not.toContainEqual(prev);
     });
 
     it("bulkDelete", async () => {
-        const _prev = await read{{pascalCase name}}s();
+        const _prev = await read{{pascalCase name}}s({});
         const params: BulkDelete{{pascalCase name}}Params = {
         };
         await bulkDelete{{pascalCase name}}(params);
-        const {{camelCase name}}s = await read{{pascalCase name}}s();
+        const {{camelCase name}}s = await read{{pascalCase name}}s({});
         expect({{camelCase name}}s).toHaveLength(0);
     });
 });

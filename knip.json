@@ -3,7 +3,7 @@
     "**/plopfile.cjs",
     "gen/**",
     "packages/app/middleware/index.ts",
-    "**/test.setup.ts",
+    "**/test.setup.ts"
   ],
   "ignoreDependencies": [
     "@markuplint/*",

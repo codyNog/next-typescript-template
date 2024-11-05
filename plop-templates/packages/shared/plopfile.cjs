@@ -33,6 +33,18 @@ module.exports = (plop) => {
         templateFile:
           "../../plop-templates/packages/shared/domain/mock/index.ts.hbs",
       },
+      {
+        type: "add",
+        path: "domain/{{pascalCase name}}/modules/index.ts",
+        templateFile:
+          "../../plop-templates/packages/shared/domain/modules/index.ts.hbs",
+      },
+      {
+        type: "add",
+        path: "domain/{{pascalCase name}}/modules/index.test.ts",
+        templateFile:
+          "../../plop-templates/packages/shared/domain/modules/index.test.ts.hbs",
+      },
     ],
   });
   plop.setGenerator("schema", {
@@ -52,9 +64,21 @@ module.exports = (plop) => {
           "../../plop-templates/packages/shared/schema/index.ts.hbs",
       },
       {
+        type: "add",
+        path: "db/seed/{{camelCase name}}/index.ts",
+        templateFile: "../../plop-templates/packages/shared/schema/seed.ts.hbs",
+      },
+      {
+        type: "add",
+        path: "db/schema/{{camelCase name}}/types/index.ts",
+        templateFile:
+          "../../plop-templates/packages/shared/schema/types/index.ts.hbs",
+      },
+      {
         type: "append",
         path: "db/schema/index.ts",
-        template: "export { {{camelCase name}} } from './{{camelCase name}}';",
+        template:
+          "export { {{camelCase name}}, {{camelCase name}}Relations } from './{{camelCase name}}';",
       },
     ],
   });

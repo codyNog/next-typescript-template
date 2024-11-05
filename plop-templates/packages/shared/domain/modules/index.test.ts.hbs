@@ -1,0 +1,14 @@
+import {describe, it, expect} from "bun:test";
+import type { Read{{pascalCase name}}sParams } from "../types";
+import { read{{pascalCase name}}sParamsToQuery } from ".";
+
+describe("{{pascalCase name}}Modules", async () => {
+    it("read{{pascalCase name}}sParamsToQuery",
+        async () => {
+            const params: Read{{pascalCase name}}sParams = {};
+            const query = read{{pascalCase name}}sParamsToQuery(params);
+            expect(query).toBeTruthy();
+        }
+    )
+}
+);

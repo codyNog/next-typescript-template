@@ -1,6 +1,8 @@
 import type {
     Create{{pascalCase name}}Params,
     Create{{pascalCase name}}ReturnValue,
+    Read{{pascalCase name}}sParams,
+    Read{{pascalCase name}}Params,
     BulkCreate{{pascalCase name}}Params,
     BulkCreate{{pascalCase name}}ReturnValue,
     BulkUpdate{{pascalCase name}}Params,
@@ -12,6 +14,7 @@ import type {
     Delete{{pascalCase name}}Params,
     Delete{{pascalCase name}}ReturnValue
 } from './types';
+import { read{{pascalCase name}}sParamsToQuery } from './modules';
 import { {{camelCase name}}Mock } from './mock';
 
 export const create{{pascalCase name}} = async (_params: Create{{pascalCase name}}Params): Promise<Create{{pascalCase name}}ReturnValue> => {
@@ -22,14 +25,13 @@ export const bulkCreate{{pascalCase name}} = async (_params: BulkCreate{{pascalC
     return {{camelCase name}}Mock.bulkCreateReturnValue;
 };
 
-/**
- * Read all {{camelCase name}}s
- * This is created for testing purposes.
- * In reality, the required types may differ depending on the calling component,
- * so detailed implementation is not provided here.
- */
-export const read{{pascalCase name}}s = async () => {
+export const read{{pascalCase name}}s = async (params: Read{{pascalCase name}}sParams ) => {
+    const _query = read{{pascalCase name}}sParamsToQuery(params);
     return [];
+};
+
+export const read{{pascalCase name}} = async (_params: Read{{pascalCase name}}Params ) => {
+    return {};
 };
 
 export const update{{pascalCase name}} = async (_params: Update{{pascalCase name}}Params): Promise<Update{{pascalCase name}}ReturnValue> => {

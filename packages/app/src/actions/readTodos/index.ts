@@ -1,5 +1,5 @@
 import { IS_STORYBOOK } from "shared/constants/env";
-import { db } from "shared/db";
+import { readTodos } from "shared/domain/Todo";
 import { actionClient } from "shared/libs/server-functions";
 import { readTodosActionMock } from "./mock";
 import {
@@ -13,8 +13,8 @@ import type {
 
 const action = actionClient
   .schema(readTodosActionParamsSchema)
-  .action(async ({ parsedInput: _ }): Promise<ReadTodosActionReturnValue> => {
-    const todos = await db.query.todos.findMany({});
+  .action(async ({ parsedInput }): Promise<ReadTodosActionReturnValue> => {
+    const todos = await readTodos(parsedInput);
     return todos;
   });
 
@@ -28,7 +28,7 @@ export const readTodosAction = async (
 
   const data = (await action(params))?.data;
 
-  if (!data) throw new Error("data not found");
+  if (!data) throw new Error("No data returned from action");
 
   return readTodosActionReturnValueSchema.parse(data);
 };

@@ -1,9 +1,17 @@
-import { pgTable } from "drizzle-orm/pg-core";
-import { createInsertSchema, createSelectSchema } from "drizzle-zod";
+import { relations, sql } from "drizzle-orm";
+import {
+  pgTable,
+  timestamp,
+} from "drizzle-orm/pg-core";
 
 export const {{camelCase name}} = pgTable("{{camelCase name}}", {
+  createdAt: timestamp("created_at", { withTimezone: true, mode: "date" })
+    .default(sql`CURRENT_TIMESTAMP`)
+    .notNull(),
+  updatedAt: timestamp("updated_at", { withTimezone: true, mode: "date" })
+    .default(sql`CURRENT_TIMESTAMP`)
+    .notNull()
+    .$onUpdate(() => sql`now()`),
 });
 
-export const insert{{pascalCase name}}Schema = createInsertSchema({{camelCase name}});
-
-export const select{{pascalCase name}}Schema = createSelectSchema({{camelCase name}});
+export const {{camelCase name}}Relations = relations({{camelCase name}}, () => ({}));
