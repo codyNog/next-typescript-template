@@ -1,4 +1,8 @@
 import { createSafeActionClient } from "next-safe-action";
+import {
+  unstable_cacheTag as cache,
+  revalidateTag as revalidate,
+} from "next/cache";
 
 const base = createSafeActionClient();
 
@@ -20,3 +24,8 @@ export const authActionClient = actionClient.use(async ({ next, ctx }) => {
 export const adminAuthActionClient = actionClient.use(async ({ next, ctx }) => {
   return next({ ctx });
 });
+
+type CacheKey = "readTodos";
+
+export const cacheTag = (cacheKey: CacheKey) => cache(cacheKey);
+export const revalidateTag = (cacheKey: CacheKey) => revalidate(cacheKey);

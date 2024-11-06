@@ -1,6 +1,4 @@
 "use server";
-import { readTodosAction } from "../actions/readTodos";
-import type { ReadTodosActionParams } from "../actions/readTodos/types";
 
 /**
  * fix or remove this type
@@ -22,11 +20,7 @@ type Props = {
  * describe this page's features
  */
 const Page = async ({ params: _, searchParams: __ }: Props) => {
-  const params: ReadTodosActionParams = {};
-  const todos = await readTodosAction(params);
-  console.log(todos);
-
-  return "aaa";
+  return "Page";
 };
 
 export default Page;
