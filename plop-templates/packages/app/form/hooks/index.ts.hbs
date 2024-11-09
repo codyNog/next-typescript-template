@@ -1,11 +1,11 @@
 import { type Props, {{camelCase name}}FormValuesSchema } from "../types";
-import { useI18n } from "shared/locales/client";
+import { useI18n } from "shared/libs/i18n/client";
 import { useForm } from "@conform-to/react";
 import { parseWithZod } from "@conform-to/zod";
-import { useFormState } from "react-dom";
+import { useActionState, useCallback, type FormEvent } from "react";
 
 export const use{{pascalCase name}}Form = ({ action: serverAction, defaultValues }: Props) => {
-  const [lastResult, action] = useFormState(
+  const [lastResult, action, isPending] = useActionState(
     async (_: unknown, formData: FormData) => {
       const submission = parseWithZod(formData, {
         schema: {{camelCase name}}FormValuesSchema,
@@ -18,6 +18,7 @@ export const use{{pascalCase name}}Form = ({ action: serverAction, defaultValues
     },
     undefined,
   );
+
   const [form, fields] = useForm({
     lastResult,
     onValidate: ({ formData }) => {
@@ -27,5 +28,11 @@ export const use{{pascalCase name}}Form = ({ action: serverAction, defaultValues
   });
   const t = useI18n();
 
-  return { action, form, fields, t };
+  const onChange = useCallback((event: FormEvent<HTMLFormElement>) => {
+    const formData = new FormData(event.currentTarget);
+    const values = Object.fromEntries(formData.entries());
+    console.log(values);
+  }, []);
+
+  return { action, form, fields, t, isPending, onChange };
 };
