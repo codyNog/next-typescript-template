@@ -1,6 +1,6 @@
 "use client";
-import { useEffect, useState, type ReactNode } from "react";
 import localForage from "localforage";
+import { type ReactNode, useEffect, useState } from "react";
 import { initializeStorage } from "../../browser/storage";
 
 export const StorageProvider = ({ children }: { children: ReactNode }) => {
