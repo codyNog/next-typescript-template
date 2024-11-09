@@ -1,16 +1,21 @@
 'use client';
 import { use{{pascalCase name}}Form } from "./hooks";
 import type { Props } from "./types";
-import _styles from "./index.module.css";
+import styles from "./index.module.css";
 
 /**
  * Form Component for create or update {{pascalCase name}}.
- * @param {Props} props {@link Props}
+ * @param {Props} props - {@link Props}
  */
 export const {{pascalCase name}}Form = (props: Props) => {
-  const { form, fields: _, action, t} = use{{pascalCase name}}Form(props);
-  return <form id={form.id} onSubmit={form.onSubmit} action={action} noValidate>
-    {{pascalCase name}}Form
-    <button type="submit">{t("form.submit")}</button>
+  const { form, action, fields, t: _, onChange} = use{{pascalCase name}}Form(props);
+  return <form id={form.id} action={action} onChange={onChange} noValidate>
+    {/* hidden input for id */}
+    <input type="hidden" className={styles.secureHidden}
+      key={fields.id.key}
+      id={fields.id.id}
+      name={fields.id.name}
+     />
+    <button type="submit">{{pascalCase name}}Form</button>
   </form>
 };

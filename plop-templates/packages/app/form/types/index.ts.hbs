@@ -1,10 +1,19 @@
 import z from "zod";
 
-export const {{camelCase name}}FormValuesSchema = z.object({});
+export const {{camelCase name}}FormValuesSchema = z.object({
+  id: z.string().optional(),
+});
 
 export type {{pascalCase name}}FormValues = z.infer<typeof {{camelCase name}}FormValuesSchema>;
 
+/**
+  * Props for {{pascalCase name}}Form.
+  * @property {Function} action - Action to be executed when the form is submitted.
+  * @property {Object} defaultValues - Default values for the form.
+  * @property {Boolean} enableAutoSave - Enable auto save feature.
+  */
 export type Props = {
   action: (value: {{pascalCase name}}FormValues) => Promise<void>;
   defaultValues?: {{pascalCase name}}FormValues;
+  enableAutoSave?: boolean;
 };

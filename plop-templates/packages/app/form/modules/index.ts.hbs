@@ -16,8 +16,16 @@ const toUpdateParams = (
   }
 };
 
+// fix this to convert data to default values
+const toDefaultValues = (): {{pascalCase name}}FormValues => {
+  return {
+    id: ""
+  }
+}
+
 export const {{name}}FormModules = {
     toCreateParams,
-    toUpdateParams
+    toUpdateParams,
+    toDefaultValues
 }
 

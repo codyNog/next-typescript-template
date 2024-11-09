@@ -1,10 +1,33 @@
-import { type Props, {{camelCase name}}FormValuesSchema } from "../types";
+import { useBrowserStorage } from "shared/libs/hooks/storage";
+import {
+  type Props,
+  type {{pascalCase name}}FormValues,
+  {{camelCase name}}FormValuesSchema,
+} from "../types";
 import { useI18n } from "shared/libs/i18n/client";
 import { useForm } from "@conform-to/react";
 import { parseWithZod } from "@conform-to/zod";
-import { useActionState, useCallback, type FormEvent } from "react";
+import { useActionState, useCallback, useMemo, type FormEvent } from "react";
 
-export const use{{pascalCase name}}Form = ({ action: serverAction, defaultValues }: Props) => {
+const empty{{pascalCase name}}FormValues: {{pascalCase name}}FormValues = {
+  id: "",
+};
+
+const use{{pascalCase name}}FormStorage = ({
+  defaultValues,
+}: { defaultValues?: {{pascalCase name}}FormValues }) => {
+  const key = defaultValues ? `{{camelCase name}}Form?id=${defaultValues.id}` : "{{camelCase name}}Form";
+  const { get, set, remove } = useBrowserStorage<{{pascalCase name}}FormValues>(
+    key,
+    defaultValues || empty{{pascalCase name}}FormValues,
+  );
+
+  return { get, set, remove };
+};
+
+export const use{{pascalCase name}}Form = ({ action: serverAction, defaultValues, enableAutoSave }: Props) => {
+  const { get, set, remove } = use{{pascalCase name}}FormStorage({ defaultValues });
+  const { data } = get;
   const [lastResult, action, isPending] = useActionState(
     async (_: unknown, formData: FormData) => {
       const submission = parseWithZod(formData, {
@@ -15,8 +38,13 @@ export const use{{pascalCase name}}Form = ({ action: serverAction, defaultValues
         return submission.reply();
       }
       await serverAction(submission.value);
+      remove();
     },
     undefined,
+  );
+  const defaultValue = useMemo(
+    () => enableAutoSave ? data : defaultValues,
+    [enableAutoSave, data, defaultValues],
   );
 
   const [form, fields] = useForm({
@@ -24,15 +52,18 @@ export const use{{pascalCase name}}Form = ({ action: serverAction, defaultValues
     onValidate: ({ formData }) => {
       return parseWithZod(formData, { schema: {{camelCase name}}FormValuesSchema });
     },
-    defaultValue: defaultValues,
+    defaultValue,
   });
   const t = useI18n();
 
-  const onChange = useCallback((event: FormEvent<HTMLFormElement>) => {
-    const formData = new FormData(event.currentTarget);
-    const values = Object.fromEntries(formData.entries());
-    console.log(values);
-  }, []);
+  const onChange = useCallback(
+    (event: FormEvent<HTMLFormElement>) => {
+      const formData = new FormData(event.currentTarget);
+      const values = Object.fromEntries(formData.entries());
+      set(values);
+    },
+    [set],
+  );
 
   return { action, form, fields, t, isPending, onChange };
 };
