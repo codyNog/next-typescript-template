@@ -25,7 +25,7 @@ export const adminAuthActionClient = actionClient.use(async ({ next, ctx }) => {
   return next({ ctx });
 });
 
-type CacheKey = "readTodos";
+type CacheKey = "readTodos" | "todoList";
 
 export const cacheTag = (cacheKey: CacheKey) => cache(cacheKey);
 export const revalidateTag = (cacheKey: CacheKey) => revalidate(cacheKey);

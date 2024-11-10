@@ -1,10 +1,9 @@
 import { z } from "zod";
-import { insertTodoSchema } from "../../../db/schema/todos/types";
 
 // Create
-export const createTodoParamsSchema = insertTodoSchema.pick({
-  todoName: true,
-  done: true,
+export const createTodoParamsSchema = z.object({
+  todoName: z.string(),
+  done: z.boolean(),
 });
 export type CreateTodoParams = z.infer<typeof createTodoParamsSchema>;
 
@@ -40,14 +39,13 @@ const readTodosWhereSchema = z.object({
   todoName: z.string().optional(),
   done: z.boolean().optional(),
 });
+const readTodosOrderBySchema = z.object({
+  createdAt: z.union([z.literal("asc"), z.literal("desc")]).optional(),
+});
 
 export const readTodosParamSchema = z.object({
   where: readTodosWhereSchema.optional(),
-  orderBy: z
-    .object({
-      createdAt: z.union([z.literal("asc"), z.literal("desc")]).optional(),
-    })
-    .optional(),
+  orderBy: readTodosOrderBySchema.optional(),
   limit: z.number().optional(),
   offset: z.number().optional(),
   with: z.object({}).optional(),

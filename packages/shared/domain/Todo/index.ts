@@ -1,4 +1,4 @@
-import { eq } from "drizzle-orm";
+import { count, eq } from "drizzle-orm";
 import { db } from "../../db";
 import { todos } from "../../db/schema";
 import { readTodosParamsToQuery } from "./modules";
@@ -55,6 +55,13 @@ export const readTodos = async (params: ReadTodosParams) => {
 
   const todos = await db.query.todos.findMany(query);
   return todos;
+};
+
+export const countTodos = async (params: ReadTodosParams) => {
+  const query = readTodosParamsToQuery(params);
+
+  const count = await db.$count(todos, query.where);
+  return count;
 };
 
 export const updateTodo = async (
