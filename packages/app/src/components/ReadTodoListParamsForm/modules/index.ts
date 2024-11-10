@@ -14,9 +14,7 @@ const toUpdateParams = (values: ReadTodoListParamsFormValues) => {
 
 // fix this to convert data to default values
 const toDefaultValues = (): ReadTodoListParamsFormValues => {
-  return {
-    id: "",
-  };
+  return {};
 };
 
 export const readTodoListParamsFormModules = {

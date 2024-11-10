@@ -1,6 +1,10 @@
 import type { UpdateTodoActionReturnValue } from "../types";
 
-const returnValue: UpdateTodoActionReturnValue = [];
+const returnValue: UpdateTodoActionReturnValue = {
+  id: "id",
+  todoName: "todoName",
+  done: false,
+};
 
 export const updateTodoActionMock = {
   returnValue,
