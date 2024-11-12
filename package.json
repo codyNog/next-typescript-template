@@ -43,6 +43,7 @@
     "postinstall": "bun gen",
     "app": "bun --filter app",
     "shared": "bun --filter shared",
+    "server": "bun --filter server",
     "ui": "bun --filter ui",
     "check-dependencies": "knip",
     "lint": "bun run --bun run-p lint:*",
