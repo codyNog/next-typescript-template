@@ -11,8 +11,11 @@ const nextConfig: NextConfig = {
   /* experimental: {
     typedRoutes: true,
   }, */
-  experimental: {
+  /*   experimental: {
     dynamicIO: true,
+  }, */
+  compiler: {
+    styledComponents: false,
   },
 };
 
