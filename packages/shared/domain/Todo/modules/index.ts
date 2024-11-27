@@ -1,20 +1,20 @@
-import { type SQL, and, asc, desc, eq, like } from "drizzle-orm";
+import { type SQL, and, asc, desc, eq, ilike } from "drizzle-orm";
 import { todos } from "../../../db/schema";
 import type { ReadTodosParams } from "../types";
 
 export const readTodosParamsToQuery = (
   params: ReadTodosParams,
 ): {
-  where: SQL<unknown> | undefined;
-  orderBy: SQL<unknown>[] | undefined;
+  where: SQL | undefined;
+  orderBy: SQL[] | undefined;
   limit: number | undefined;
   offset: number | undefined;
   with: Record<string, unknown> | undefined;
 } => {
-  const where = [];
+  const where: SQL[] = [];
 
   if (params.where?.todoName !== undefined) {
-    where.push(like(todos.todoName, `%${params.where.todoName}%`));
+    where.push(ilike(todos.todoName, `%${params.where.todoName}%`));
   }
   if (params.where?.done !== undefined) {
     where.push(eq(todos.done, params.where.done));
