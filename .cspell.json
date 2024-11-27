@@ -38,7 +38,9 @@
     "vaul",
     "embla",
     "unparse",
-    "date-testid"
+    "date-testid",
+    "ilike",
+    "INDEXEDDB"
   ],
   "patterns": [
     {

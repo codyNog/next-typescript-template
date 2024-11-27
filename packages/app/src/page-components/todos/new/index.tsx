@@ -37,7 +37,7 @@ const TodosNewPage = async ({ params: _, searchParams: __ }: Props) => {
     redirect("/todos");
   }
 
-  return <TodoForm action={action} />;
+  return <TodoForm action={action} enableAutoSave />;
 };
 
 export default TodosNewPage;

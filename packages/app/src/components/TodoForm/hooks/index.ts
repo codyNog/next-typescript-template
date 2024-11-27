@@ -15,16 +15,20 @@ const emptyTodoFormValues: TodoFormValues = {
   done: false,
 };
 
+// ストレージフックを最適化して常に同じ順序で呼び出されるようにする
 const useTodoFormStorage = ({
   defaultValues,
-}: { defaultValues?: TodoFormValues }) => {
-  const key = defaultValues ? `todoForm?id=${defaultValues.id}` : "todoForm";
-  const { get, set, remove } = useBrowserStorage<TodoFormValues>(
-    key,
+}: {
+  defaultValues?: TodoFormValues;
+}) => {
+  // キーの生成をコンポーネントのトップレベルで行う
+  const storageKey = defaultValues
+    ? `todoForm?id=${defaultValues.id}`
+    : "todoForm";
+  return useBrowserStorage<TodoFormValues>(
+    storageKey,
     defaultValues || emptyTodoFormValues,
   );
-
-  return { get, set, remove };
 };
 
 export const useTodoForm = ({
@@ -32,23 +36,29 @@ export const useTodoForm = ({
   defaultValues,
   enableAutoSave,
 }: Props) => {
+  // ストレージフックを最初に呼び出す
   const { get, set, remove } = useTodoFormStorage({ defaultValues });
   const { data } = get;
+
+  // useActionStateを次に呼び出す
   const [lastResult, action, isPending] = useActionState(
     async (_: unknown, formData: FormData) => {
       const submission = parseWithZod(formData, {
         schema: todoFormValuesSchema,
       });
-      console.log(submission);
+
       if (submission.status !== "success") {
         return submission.reply();
       }
-      console.log(submission.value);
+
       await serverAction(submission.value);
-      remove();
+      await remove();
+      return submission.reply();
     },
     undefined,
   );
+
+  // その後で他のフックを呼び出す
   const defaultValue = useMemo(
     () => (enableAutoSave ? data : defaultValues),
     [enableAutoSave, data, defaultValues],
@@ -61,16 +71,29 @@ export const useTodoForm = ({
     },
     defaultValue,
   });
+
   const t = useI18n();
 
   const onChange = useCallback(
     (event: FormEvent<HTMLFormElement>) => {
+      if (!enableAutoSave) return;
       const formData = new FormData(event.currentTarget);
-      const values = Object.fromEntries(formData.entries());
-      set(values);
+      const object = Object.fromEntries(formData.entries());
+      const values: TodoFormValues = {
+        ...object,
+        todoName: object?.todoName ? String(object.todoName) : "",
+      };
+      set(values).catch(console.error);
     },
-    [set],
+    [enableAutoSave, set],
   );
 
-  return { action, form, fields, t, isPending, onChange };
+  return {
+    action,
+    form,
+    fields,
+    t,
+    isPending,
+    onChange,
+  };
 };

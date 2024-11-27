@@ -14,6 +14,7 @@ export const ReadTodoListParamsForm = (props: Props) => {
     fields,
     t: _,
     onChange,
+    isPending,
   } = useReadTodoListParamsForm(props);
 
   return (
@@ -56,7 +57,11 @@ export const ReadTodoListParamsForm = (props: Props) => {
         <button type="reset" className={styles.resetButton}>
           リセット
         </button>
-        <button type="submit" className={styles.submitButton}>
+        <button
+          type="submit"
+          className={styles.submitButton}
+          disabled={isPending}
+        >
           検索
         </button>
       </div>

@@ -11,16 +11,18 @@ import {
 
 const emptyReadTodoListParamsFormValues: ReadTodoListParamsFormValues = {};
 
+// ストレージフックを最適化
 const useReadTodoListParamsFormStorage = ({
   defaultValues,
-}: { defaultValues?: ReadTodoListParamsFormValues }) => {
-  const key = "readTodoListParamsForm";
-  const { get, set, remove } = useBrowserStorage<ReadTodoListParamsFormValues>(
-    key,
+}: {
+  defaultValues?: ReadTodoListParamsFormValues;
+}) => {
+  // キーを定数として定義
+  const STORAGE_KEY = "readTodoListParamsForm";
+  return useBrowserStorage<ReadTodoListParamsFormValues>(
+    STORAGE_KEY,
     defaultValues || emptyReadTodoListParamsFormValues,
   );
-
-  return { get, set, remove };
 };
 
 export const useReadTodoListParamsForm = ({
@@ -28,10 +30,13 @@ export const useReadTodoListParamsForm = ({
   defaultValues,
   enableAutoSave,
 }: Props) => {
+  // ストレージフックを最初に呼び出す
   const { get, set, remove } = useReadTodoListParamsFormStorage({
     defaultValues,
   });
   const { data } = get;
+
+  // useActionStateを次に呼び出す
   const [lastResult, action, isPending] = useActionState(
     async (_: unknown, formData: FormData) => {
       const submission = parseWithZod(formData, {
@@ -41,11 +46,15 @@ export const useReadTodoListParamsForm = ({
       if (submission.status !== "success") {
         return submission.reply();
       }
+
       await serverAction(submission.value);
-      remove();
+      await remove();
+      return submission.reply();
     },
     undefined,
   );
+
+  // その後で他のフックを呼び出す
   const defaultValue = useMemo(
     () => (enableAutoSave ? data : defaultValues),
     [enableAutoSave, data, defaultValues],
@@ -60,16 +69,27 @@ export const useReadTodoListParamsForm = ({
     },
     defaultValue,
   });
+
   const t = useI18n();
 
   const onChange = useCallback(
     (event: FormEvent<HTMLFormElement>) => {
+      if (!enableAutoSave) return;
       const formData = new FormData(event.currentTarget);
-      const values = Object.fromEntries(formData.entries());
-      set(values);
+      const values = Object.fromEntries(
+        formData.entries(),
+      ) as ReadTodoListParamsFormValues;
+      set(values).catch(console.error);
     },
-    [set],
+    [enableAutoSave, set],
   );
 
-  return { action, form, fields, t, isPending, onChange };
+  return {
+    action,
+    form,
+    fields,
+    t,
+    isPending,
+    onChange,
+  };
 };

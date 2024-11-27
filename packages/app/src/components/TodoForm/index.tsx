@@ -8,7 +8,14 @@ import type { Props } from "./types";
  * @param {Props} props - {@link Props}
  */
 export const TodoForm = (props: Props) => {
-  const { form, action, fields, t: _, onChange } = useTodoForm(props);
+  const {
+    form,
+    action,
+    fields,
+    t: _,
+    onChange,
+    isPending,
+  } = useTodoForm(props);
 
   return (
     <form
@@ -55,8 +62,11 @@ export const TodoForm = (props: Props) => {
           完了
         </label>
       </div>
-
-      <button type="submit" className={styles.submitButton}>
+      <button
+        type="submit"
+        className={styles.submitButton}
+        disabled={isPending}
+      >
         {fields.id.initialValue ? "更新" : "作成"}
       </button>
     </form>

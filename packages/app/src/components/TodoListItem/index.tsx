@@ -7,9 +7,10 @@ import styles from "./index.module.css";
 type Props = {
   todo: ReadTodoListActionReturnValue["data"][number];
   basePath: string;
+  disabled?: boolean;
 };
 
-export const TodoListItem = async ({ todo, basePath }: Props) => {
+export const TodoListItem = async ({ todo, basePath, disabled }: Props) => {
   async function deleteTodo() {
     "use server";
     await deleteTodoAction({ id: todo.id });
@@ -36,6 +37,7 @@ export const TodoListItem = async ({ todo, basePath }: Props) => {
         type="button"
         onClick={deleteTodo}
         className={styles.deleteButton}
+        disabled={disabled}
       >
         削除
       </button>
