@@ -17,12 +17,10 @@ const use{{pascalCase name}}FormStorage = ({
   defaultValues,
 }: { defaultValues?: {{pascalCase name}}FormValues }) => {
   const key = defaultValues ? `{{camelCase name}}Form?id=${defaultValues.id}` : "{{camelCase name}}Form";
-  const { get, set, remove } = useBrowserStorage<{{pascalCase name}}FormValues>(
+  return useBrowserStorage<{{pascalCase name}}FormValues>(
     key,
     defaultValues || empty{{pascalCase name}}FormValues,
   );
-
-  return { get, set, remove };
 };
 
 export const use{{pascalCase name}}Form = ({ action: serverAction, defaultValues, enableAutoSave }: Props) => {
@@ -38,7 +36,8 @@ export const use{{pascalCase name}}Form = ({ action: serverAction, defaultValues
         return submission.reply();
       }
       await serverAction(submission.value);
-      remove();
+      await remove();
+      return submission.reply();
     },
     undefined,
   );
@@ -58,11 +57,13 @@ export const use{{pascalCase name}}Form = ({ action: serverAction, defaultValues
 
   const onChange = useCallback(
     (event: FormEvent<HTMLFormElement>) => {
+      if (!enableAutoSave) return;
       const formData = new FormData(event.currentTarget);
-      const values = Object.fromEntries(formData.entries());
+      const object = Object.fromEntries(formData.entries());
+      const values: {{pascalCase name}}FormValues = { ...object }
       set(values);
     },
-    [set],
+    [enableAutoSave, set],
   );
 
   return { action, form, fields, t, isPending, onChange };
