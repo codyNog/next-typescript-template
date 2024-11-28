@@ -23,6 +23,7 @@ type Props = {
  * describe this page's features
  */
 const {{pascalCase name}}Page = async ({params: _, searchParams: __}: Props) => {
+  const [_, __] = await Promise.all([params, searchParams]);
   return {{pascalCase name}}Page
 };
 
