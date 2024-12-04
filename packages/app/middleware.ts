@@ -6,6 +6,7 @@ import { auth } from "./auth";
 const I18nMiddleware = createI18nMiddleware({
   locales: ["en", "ja"],
   defaultLocale: "en",
+  urlMappingStrategy: "rewrite",
 });
 
 /**

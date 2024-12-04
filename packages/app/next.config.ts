@@ -7,16 +7,15 @@ const withBundleAnalyzer = analyzer({
 });
 
 const nextConfig: NextConfig = {
-  // TODO: fix this when routes are typed
-  /* experimental: {
-    typedRoutes: true,
-  }, */
   /*   experimental: {
-    dynamicIO: true,
+    // TODO: fix this when routes are typed
+    typedRoutes: true,
   }, */
   compiler: {
     styledComponents: false,
   },
+  // Enable if static export is needed
+  // output: "export",
 };
 
 export default withBundleAnalyzer(nextConfig);

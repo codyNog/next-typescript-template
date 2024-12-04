@@ -1,5 +1,3 @@
-"use server";
-
 /**
  * fix or remove this type
  */
