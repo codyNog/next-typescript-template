@@ -76,7 +76,8 @@
     "shared:db:generate": "npm run db:generate --workspace=shared",
     "shared:db:push": "npm run db:push --workspace=shared",
     "shared:db:migrate": "npm run db:migrate --workspace=shared",
-    "shared:db:seed": "npm run db:seed --workspace=shared"
+    "shared:db:seed": "npm run db:seed --workspace=shared",
+    "agent:dev": "npm run dev --workspace=agent"
   },
   "type": "module",
   "workspaces": [
