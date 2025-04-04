@@ -1,28 +1,48 @@
 "use client";
-import useSWR from "swr";
+import { useSuspenseQuery, useMutation, useQueryClient } from "@tanstack/react-query"; // useQueryをuseSuspenseQueryに変更
 import { browserStorage } from "../../browser/storage";
 
 export const useBrowserStorage = <T>(key: string, fallbackData: T) => {
-  const get = useSWR<T>(
-    key,
-    async () => {
+  const queryClient = useQueryClient();
+
+  // useQueryをuseSuspenseQueryに置き換え
+  const getQuery = useSuspenseQuery<T, Error, T, [string]>({ // 型引数を調整
+    queryKey: [key], // queryKeyを設定
+    queryFn: async () => {
+      // データ取得に失敗したらfallbackDataを返す
+      // useSuspenseQueryは成功するまで待つので、fallbackDataはcatch内で返す
       return browserStorage.get<T>(key).catch(() => fallbackData);
     },
-    { suspense: true },
-  );
+    // initialData は useSuspenseQuery では不要
+    // suspense: true も useSuspenseQuery では不要
+  });
 
-  const set = async <T>(value: T) => {
-    await browserStorage.set<T>(key, value);
-    get.mutate();
-  };
+  // set関数をuseMutationに置き換え
+  const setMutation = useMutation<void, Error, T>({ // 型引数を設定
+    mutationFn: async (value: T) => {
+      await browserStorage.set<T>(key, value);
+    },
+    onSuccess: () => {
+      getQuery.refetch();
+    },
+  });
 
-  const remove = async () => {
-    await browserStorage.remove(key);
-  };
+  // remove関数をuseMutationに置き換え
+  const removeMutation = useMutation<void, Error, void>({ // 型引数を設定
+    mutationFn: async () => {
+      await browserStorage.remove(key);
+    },
+    onSuccess: () => {
+      // 成功したら再取得をトリガー
+      getQuery.refetch();
+    },
+  });
 
   return {
-    get,
-    set,
-    remove,
+    // useQueryの結果を返す (dataプロパティに必要なデータが入る)
+    get: getQuery,
+    // useMutationのmutate関数を返す
+    set: setMutation.mutateAsync, // mutateAsyncでPromiseを返すようにする
+    remove: removeMutation.mutateAsync, // mutateAsyncでPromiseを返すようにする
   };
 };
