@@ -186,3 +186,8 @@ dist
 # packages/gen
 
 packages/gen
+
+# ai-rules
+.clinerules
+.cursorrules
+.ai-rules-version.json

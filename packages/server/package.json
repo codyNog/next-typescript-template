@@ -4,7 +4,9 @@
   "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "bun run --watch src/index.ts",
+    "dev": "node --watch src/index.ts",
+    "build": "tsc",
+    "start": "node dist/index.js",
     "plop": "plop"
   },
   "dependencies": {
@@ -12,8 +14,6 @@
     "elysia": "latest",
     "elysia-autoroutes": "^0.5.0"
   },
-  "devDependencies": {
-    "bun-types": "latest"
-  },
-  "module": "src/index.js"
+  "devDependencies": {},
+  "module": "dist/index.js"
 }

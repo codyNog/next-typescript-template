@@ -1,6 +1,6 @@
 import fs from "node:fs";
-import { parse } from "papaparse";
-import csvFile from "./index.csv";
+import pkg from 'papaparse';
+const { parse } = pkg;
 
 // CSVファイルを読み込み、JSONに変換する関数
 const convertCsvToJson = (csvFilePath) => {
@@ -47,4 +47,4 @@ const convertCsvToJson = (csvFilePath) => {
 };
 
 // 関数を呼び出し
-convertCsvToJson(csvFile);
+convertCsvToJson("./i18n/index.csv");

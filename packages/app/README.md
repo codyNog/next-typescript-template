@@ -5,12 +5,12 @@ This directory contains web application by Next.js.
 ## dev
 
 ```bash
-bun dev
+npm run dev
 ```
 
 ## plop
 
-Generate code in bulk with `bun plop {{action}}`.  
+Generate code in bulk with `npm run plop {{action}}`.
 For detailed execution, refer to [plop-templates](./plop-templates/README.md).
 
 ## bundle analyzer

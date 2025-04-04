@@ -1,15 +1,12 @@
-# Elysia with Bun runtime
+# Elysia Server
 
 ## Getting Started
-To get started with this template, simply paste this command into your terminal:
-```bash
-bun create elysia ./elysia-example
-```
+This directory contains the server implementation using Elysia.js.
 
 ## Development
 To start the development server run:
 ```bash
-bun run dev
+npm run dev
 ```
 
 Open http://localhost:4000/ with your browser to see the result.

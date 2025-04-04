@@ -3,5 +3,5 @@
 ## Installation
 
 ```sh
-bun install
+npm install
 ```
