@@ -21,7 +21,8 @@
     "openapi-typescript-fetch": "^2.1.0",
     "postgres": "^3.4.5",
     "qs": "^6.14.0",
-    "uuid": "^11.1.0"
+    "uuid": "^11.1.0",
+    "@types/qs": "^6.14.0"
   },
   "scripts": {
     "build": "tsc",

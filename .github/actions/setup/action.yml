@@ -1,0 +1,41 @@
+name: 'Setup Development Environment'
+description: 'Setup development environment using mise'
+
+inputs:
+  cache-key-suffix:
+    description: 'Additional cache key suffix'
+    required: false
+    default: 'v1'
+
+outputs:
+  cache-key:
+    description: 'Cache key for this setup step'
+    value: ${{ steps.cache-key.outputs.key }}
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Generate cache key
+      id: cache-key
+      shell: bash
+      run: |
+        # Generate hash from mise configuration files
+        MISE_HASH=$(find . -name ".mise.toml" -o -name ".tool-versions" -o -name "mise.toml" | sort | xargs cat 2>/dev/null | sha256sum | cut -d' ' -f1)
+        KEY="mise-${{ runner.os }}-${MISE_HASH}-${{ inputs.cache-key-suffix }}"
+        echo "key=${KEY}" >> $GITHUB_OUTPUT
+        echo "Generated mise cache key: ${KEY}"
+
+    - name: Install mise
+      uses: jdx/mise-action@v2
+        
+    - name: Install tools with mise
+      shell: bash
+      run: mise install
+        
+    - name: Verify mise setup
+      shell: bash
+      run: |
+        mise list
+        echo "Node version: $(node --version)"
+        echo "NPM version: $(npm --version)"
+        echo "Mise environment setup completed"

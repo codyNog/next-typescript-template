@@ -1,0 +1,49 @@
+name: 'Setup NPM Dependencies'
+description: 'Cache and install NPM dependencies (requires mise setup action first)'
+
+inputs:
+  cache-key-suffix:
+    description: 'Additional cache key suffix'
+    required: false
+    default: 'v1'
+
+outputs:
+  cache-key:
+    description: 'Cache key for this setup step'
+    value: ${{ steps.cache-key.outputs.key }}
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Generate cache key
+      id: cache-key
+      shell: bash
+      run: |
+        # Generate hash from package-lock.json
+        LOCKFILE_HASH=${{ hashFiles('**/package-lock.json') }}
+        KEY="npm-${{ runner.os }}-${LOCKFILE_HASH}-${{ inputs.cache-key-suffix }}"
+        echo "key=${KEY}" >> $GITHUB_OUTPUT
+        echo "Generated npm cache key: ${KEY}"
+
+    - name: Cache node modules
+      uses: actions/cache@v4
+      with:
+        path: |
+          ~/.npm
+          node_modules
+          packages/*/node_modules
+        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}-${{ inputs.cache-key-suffix }}
+        restore-keys: |
+          ${{ runner.os }}-node-
+          
+    - name: Install dependencies
+      shell: bash
+      run: |
+        npm ci
+        # Workaround for npm optional dependencies issue
+        # https://github.com/npm/cli/issues/4828
+        # Force install platform-specific packages for CI (Linux x64)
+        npm install --no-save --force \
+          @rollup/rollup-linux-x64-gnu \
+          @biomejs/cli-linux-x64 \
+          || echo "Warning: Some optional dependencies failed to install"

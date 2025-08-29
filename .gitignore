@@ -188,6 +188,14 @@ dist
 packages/gen
 
 # ai-rules
+ai-docs/**
+.cursor/rules
 .clinerules
-.cursorrules
 .ai-rules-version.json
+.roo/rules
+.roo/rules-*
+.github/copilot-instructions.md
+.roomodes
+.claude/*
+!.claude/commands
+CLAUDE.personal.md

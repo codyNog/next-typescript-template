@@ -1,10 +1,10 @@
-import { google } from '@ai-sdk/google';
-import { anthropic } from '@ai-sdk/anthropic';
-import { Agent } from '@mastra/core/agent';
-import { mcp } from '../../mcp';
+import { anthropic } from "@ai-sdk/anthropic";
+import { google } from "@ai-sdk/google";
+import { Agent } from "@mastra/core/agent";
+import { mcp } from "../../mcp";
 
 export const weatherAgent = new Agent({
-  name: 'Weather Agent',
+  name: "Weather Agent",
   instructions: `
       You are a helpful weather assistant that provides accurate weather information.
 
@@ -16,15 +16,15 @@ export const weatherAgent = new Agent({
       - Keep responses concise but informative
       - reply in Japanese
 `,
-  model: google('gemini-2.5-pro-exp-03-25'),
+  model: google("gemini-2.5-pro-exp-03-25"),
 });
 
 export const browserAgent = new Agent({
-  name: 'Browser Agent',
+  name: "Browser Agent",
   instructions: `
     You are a browser agent that can browse the web and answer questions.
     - reply in Japanese
   `,
-  model: anthropic('claude-3-7-sonnet-20250219'),
-  tools: await mcp.getTools()
+  model: anthropic("claude-3-7-sonnet-20250219"),
+  tools: await mcp.getTools(),
 });

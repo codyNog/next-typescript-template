@@ -1,5 +1,5 @@
 import fs from "node:fs";
-import pkg from 'papaparse';
+import pkg from "papaparse";
 const { parse } = pkg;
 
 // CSVファイルを読み込み、JSONに変換する関数

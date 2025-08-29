@@ -40,12 +40,9 @@
   "peerDependencies": {
     "typescript": "^5.0.0"
   },
-  "optionalDependencies": {
-    "@codynog/ai-rules": "latest"
-  },
   "scripts": {
     "preinstall": "npx only-allow npm",
-    "postinstall": "npm run gen && [ '$CI' != 'true' ] && npx @codynog/ai-rules",
+    "postinstall": "npm run gen && [ '$CI' != 'true' ] && npx @omni-stove/ai-rules",
     "check-dependencies": "knip",
     "lint": "run-p lint:*",
     "lint:script": "biome check .",
@@ -54,7 +51,8 @@
     "format": "biome check --write .",
     "test": "npm test --workspaces --if-present",
     "gen": "run-p gen:*",
-    "gen:i18n": "node i18n/index.js",
+    "gen:ui": "npx -y @omni-stove/ui --extract packages/ui",
+    "gen:i18n": "npx @omni-stove/csv-i18n --input i18n --output packages/gen/i18n",
     "knip": "knip",
     "build-check": "npm run build-check --workspaces --if-present",
     "update": "npm-check-updates -u && npm run update --workspaces --if-present",

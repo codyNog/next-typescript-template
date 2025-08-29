@@ -1,4 +1,4 @@
-import { useBrowserStorage } from "shared/libs/hooks/storage";
+import { useStorage } from "shared/libs/hooks/storage";
 import {
   type Props,
   type {{pascalCase name}}FormValues,
@@ -17,7 +17,7 @@ const use{{pascalCase name}}FormStorage = ({
   defaultValues,
 }: { defaultValues?: {{pascalCase name}}FormValues }) => {
   const key = defaultValues ? `{{camelCase name}}Form?id=${defaultValues.id}` : "{{camelCase name}}Form";
-  return useBrowserStorage<{{pascalCase name}}FormValues>(
+  return useStorage<{{pascalCase name}}FormValues>(
     key,
     defaultValues || empty{{pascalCase name}}FormValues,
   );

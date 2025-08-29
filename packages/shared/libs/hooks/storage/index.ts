@@ -1,12 +1,11 @@
 "use client";
-import { useSuspenseQuery, useMutation, useQueryClient } from "@tanstack/react-query"; // useQueryをuseSuspenseQueryに変更
+import { useMutation, useSuspenseQuery } from "@tanstack/react-query"; // useQueryをuseSuspenseQueryに変更
 import { browserStorage } from "../../browser/storage";
 
-export const useBrowserStorage = <T>(key: string, fallbackData: T) => {
-  const queryClient = useQueryClient();
-
+export const useStorage = <T>(key: string, fallbackData: T) => {
   // useQueryをuseSuspenseQueryに置き換え
-  const getQuery = useSuspenseQuery<T, Error, T, [string]>({ // 型引数を調整
+  const getQuery = useSuspenseQuery<T, Error, T, [string]>({
+    // 型引数を調整
     queryKey: [key], // queryKeyを設定
     queryFn: async () => {
       // データ取得に失敗したらfallbackDataを返す
@@ -18,7 +17,8 @@ export const useBrowserStorage = <T>(key: string, fallbackData: T) => {
   });
 
   // set関数をuseMutationに置き換え
-  const setMutation = useMutation<void, Error, T>({ // 型引数を設定
+  const setMutation = useMutation<void, Error, T>({
+    // 型引数を設定
     mutationFn: async (value: T) => {
       await browserStorage.set<T>(key, value);
     },
@@ -28,7 +28,8 @@ export const useBrowserStorage = <T>(key: string, fallbackData: T) => {
   });
 
   // remove関数をuseMutationに置き換え
-  const removeMutation = useMutation<void, Error, void>({ // 型引数を設定
+  const removeMutation = useMutation<void, Error, void>({
+    // 型引数を設定
     mutationFn: async () => {
       await browserStorage.remove(key);
     },
