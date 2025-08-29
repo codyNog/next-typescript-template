@@ -51,7 +51,7 @@
     "format": "biome check --write .",
     "test": "npm test --workspaces --if-present",
     "gen": "run-p gen:*",
-    "gen:ui": "npx -y @omni-stove/ui --extract packages/ui",
+    "gen:ui": "npx -y @omni-stove/ui --extract packages/ui --platform web",
     "gen:i18n": "npx @omni-stove/csv-i18n --input i18n --output packages/gen/i18n",
     "knip": "knip",
     "build-check": "npm run build-check --workspaces --if-present",
@@ -62,11 +62,6 @@
     "app:test": "npm run test --workspace=app",
     "app:plop": "npm run plop --workspace=app",
     "app:update": "npm run update --workspace=app",
-    "server:dev": "npm run dev --workspace=server",
-    "server:build": "npm run build --workspace=server",
-    "server:start": "npm run start --workspace=server",
-    "server:test": "npm run test --workspace=server",
-    "server:plop": "npm run plop --workspace=server",
     "shared:build": "npm run build --workspace=shared",
     "shared:test": "npm run test --workspace=shared",
     "shared:plop": "npm run plop --workspace=shared",
@@ -78,9 +73,7 @@
     "agent:dev": "npm run dev --workspace=agent"
   },
   "type": "module",
-  "workspaces": [
-    "packages/*"
-  ],
+  "workspaces": ["packages/*"],
   "dependencies": {
     "@tanstack/react-query": "^5.71.5",
     "zod": "^3.24.2"

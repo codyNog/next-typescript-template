@@ -199,3 +199,14 @@ ai-docs/**
 .claude/*
 !.claude/commands
 CLAUDE.personal.md
+.gemini/*
+!.gemini/commands
+GEMINI.personal.md
+
+# packages/gen
+
+packages/gen
+packages/ui/*
+!packages/ui/package.json
+
+.ui-version.json
