@@ -1,6 +1,6 @@
 import { {{ name }}FunctionParamsSchema, {{ name }}FunctionReturnValueSchema } from "./types";
 import type { {{ pascalCase name }}FunctionParams, {{ pascalCase name }}FunctionReturnValue } from "./types";
-import { functionClient, type FunctionError, FUNCTION_ERROR_TYPES } from "../../libs/server-function"
+import { functionClient, type FunctionError, FUNCTION_ERROR_TYPES } from "shared/libs/server-functions"
 import { IS_STORYBOOK } from "shared/constants/env";
 import { {{ name }}FunctionMock } from "./mock";
 
