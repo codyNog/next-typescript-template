@@ -42,7 +42,7 @@
   },
   "scripts": {
     "preinstall": "npx only-allow npm",
-    "postinstall": "npm run gen && [ '$CI' != 'true' ] && npx @omni-stove/ai-rules",
+    "postinstall": "npm run gen && [ '$CI' != 'true' ] && npx -y @omni-stove/ai-rules",
     "check-dependencies": "knip",
     "lint": "run-p lint:*",
     "lint:script": "biome check .",
@@ -52,7 +52,7 @@
     "test": "npm test --workspaces --if-present",
     "gen": "run-p gen:*",
     "gen:ui": "npx -y @omni-stove/ui --extract packages/ui --platform web",
-    "gen:i18n": "npx @omni-stove/csv-i18n --input i18n --output packages/gen/i18n",
+    "gen:i18n": "npx -y @omni-stove/csv-i18n --input i18n --output packages/gen/i18n",
     "knip": "knip",
     "build-check": "npm run build-check --workspaces --if-present",
     "update": "npm-check-updates -u && npm run update --workspaces --if-present",

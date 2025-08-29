@@ -51,14 +51,6 @@ claude mcp add --scope=user context7 npx -- -y @upstash/context7-mcp@latest
 claude mcp add --scope=user playwright npx -- -y @playwright/mcp@latest
 ```
 
-### serena
-
-Configure for each workspace:
-
-```bash
-claude mcp add serena -- uvx --from git+https://github.com/oraios/serena serena-mcp-server --context ide-assistant --project $(pwd) --enable-web-dashboard=false
-```
-
 ## Usage
 
 1. Run `claude mcp list` to see your current MCP servers
