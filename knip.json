@@ -2,7 +2,7 @@
   "ignore": [
     "**/plopfile.cjs",
     "gen/**",
-    "packages/app/middleware/index.ts",
+    "packages/web/middleware/index.ts",
     "**/test.setup.ts"
   ],
   "ignoreDependencies": [

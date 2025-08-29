@@ -1,0 +1,18 @@
+import type {
+  {{pascalCase name}}FunctionReturnValue,
+} from "../types";
+
+/**
+ * {{ pascalCase name }} Function のモック返り値
+ */
+const returnValue: {{pascalCase name}}FunctionReturnValue = {
+  // TODO: モックデータを定義
+};
+
+/**
+ * {{ pascalCase name }} Function のモックオブジェクト
+ * @description Storybook やテスト環境で使用するモックデータ
+ */
+export const {{name}}FunctionMock = {
+  returnValue,
+};

@@ -1,0 +1,25 @@
+import {z} from "zod"
+
+/**
+ * {{ pascalCase name }} Function のパラメータスキーマ
+ */
+export const {{name}}FunctionParamsSchema = z.object({
+  // TODO: パラメータを定義
+})
+
+/**
+ * {{ pascalCase name }} Function のパラメータ型
+ */
+export type {{pascalCase name}}FunctionParams = z.infer<typeof {{name}}FunctionParamsSchema>
+
+/**
+ * {{ pascalCase name }} Function の返り値スキーマ
+ */
+export const {{name}}FunctionReturnValueSchema = z.object({
+  // TODO: 返り値を定義
+})
+
+/**
+ * {{ pascalCase name }} Function の返り値型
+ */
+export type {{pascalCase name}}FunctionReturnValue = z.infer<typeof {{name}}FunctionReturnValueSchema>

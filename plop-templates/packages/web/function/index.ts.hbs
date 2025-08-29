@@ -1,0 +1,78 @@
+import { {{ name }}FunctionParamsSchema, {{ name }}FunctionReturnValueSchema } from "./types";
+import type { {{ pascalCase name }}FunctionParams, {{ pascalCase name }}FunctionReturnValue } from "./types";
+import { functionClient, type FunctionError, FUNCTION_ERROR_TYPES } from "../../libs/server-function"
+import { IS_STORYBOOK } from "shared/constants/env";
+import { {{ name }}FunctionMock } from "./mock";
+
+/**
+ * {{ pascalCase name }} の Server Function 実装
+ * @internal
+ */
+const serverFunction = functionClient
+  .inputSchema({{ name }}FunctionParamsSchema)
+  .action(async ({ parsedInput }): Promise<{{ pascalCase name }}FunctionReturnValue> => {
+    // TODO: ここに実際の処理を実装する
+    console.log(parsedInput);
+    return {};
+  });
+
+/**
+ * {{ pascalCase name }} Server Function
+ * @param params - 関数のパラメータ
+ * @returns {{ pascalCase name }}FunctionReturnValue
+ * @throws {FunctionError} エラーが発生した場合
+ * @example
+ * ```typescript
+ * const result = await {{ name }}Function({
+ *   // パラメータを設定
+ * });
+ * ```
+ */
+export const {{ name }}Function = async (
+  params: {{ pascalCase name }}FunctionParams,
+): Promise<{{ pascalCase name }}FunctionReturnValue> => {
+  "use server";
+
+  // TODO: fix storybook workaround
+  if(IS_STORYBOOK) return {{ name }}FunctionMock.returnValue;
+
+  const result = await serverFunction(params);
+  
+  if (result?.serverError) {
+    const error: FunctionError = {
+      type: FUNCTION_ERROR_TYPES.SERVER_ERROR,
+      message: result.serverError,
+      details: result
+    };
+    throw new Error(JSON.stringify(error));
+  }
+  
+  if (result?.validationErrors) {
+    const error: FunctionError = {
+      type: FUNCTION_ERROR_TYPES.VALIDATION_ERROR,
+      message: 'Validation failed',
+      details: result.validationErrors
+    };
+    throw new Error(JSON.stringify(error));
+  }
+  
+  if (!result?.data) {
+    const error: FunctionError = {
+      type: FUNCTION_ERROR_TYPES.UNKNOWN_ERROR,
+      message: 'Unknown error occurred',
+      details: result
+    };
+    throw new Error(JSON.stringify(error));
+  }
+
+  try {
+    return {{ name }}FunctionReturnValueSchema.parse(result.data);
+  } catch (zodError) {
+    const error: FunctionError = {
+      type: FUNCTION_ERROR_TYPES.VALIDATION_ERROR,
+      message: 'Response validation failed',
+      details: zodError
+    };
+    throw new Error(JSON.stringify(error));
+  }
+};
