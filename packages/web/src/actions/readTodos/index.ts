@@ -1,6 +1,6 @@
 import { IS_STORYBOOK } from "shared/constants/env";
 import { readTodos } from "shared/domain/Todo";
-import { actionClient } from "shared/libs/server-functions";
+import { functionClient } from "shared/libs/server-functions";
 import { readTodosActionMock } from "./mock";
 import {
   readTodosActionParamsSchema,
@@ -11,7 +11,7 @@ import type {
   ReadTodosActionReturnValue,
 } from "./types";
 
-const action = actionClient
+const action = functionClient
   .schema(readTodosActionParamsSchema)
   .action(async ({ parsedInput }): Promise<ReadTodosActionReturnValue> => {
     const todos = await readTodos(parsedInput);
