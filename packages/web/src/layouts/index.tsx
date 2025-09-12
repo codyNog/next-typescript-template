@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import { Providers } from "../providers";
+import "ui/global.css";
 
 // params を受け取らないように Props を修正
 // params が Promise である可能性を考慮して型を修正
@@ -15,7 +16,13 @@ const Layout = async ({ children, params }: Props) => {
   // params を await する
   const { locale } = await params;
 
-  return <Providers locale={locale}>{children}</Providers>;
+  return (
+    <html lang={locale}>
+      <body>
+        <Providers locale={locale}>{children}</Providers>
+      </body>
+    </html>
+  );
 };
 
 export default Layout;
