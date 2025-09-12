@@ -1,7 +1,5 @@
 import type { ReactNode } from "react";
-import { I18nProviderClient } from "shared/libs/i18n/client";
-import { StorageProvider } from "shared/libs/providers/storage";
-import { QueryProvider } from "../providers/QueryProvider";
+import { Providers } from "../providers";
 
 // params を受け取らないように Props を修正
 // params が Promise である可能性を考慮して型を修正
@@ -17,14 +15,7 @@ const Layout = async ({ children, params }: Props) => {
   // params を await する
   const { locale } = await params;
 
-  return (
-    <QueryProvider>
-      <I18nProviderClient locale={locale || "en"}>
-        {/* locale がない場合のデフォルト値 */}
-        <StorageProvider>{children}</StorageProvider>
-      </I18nProviderClient>
-    </QueryProvider>
-  );
+  return <Providers locale={locale}>{children}</Providers>;
 };
 
 export default Layout;

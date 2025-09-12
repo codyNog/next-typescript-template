@@ -6,5 +6,6 @@
     "**/*.code-search": true,
     "packages/app/app/**": true
   },
-  "css.lint.validProperties": ["composes"]
+  "css.lint.validProperties": ["composes"],
+  "editor.formatOnSave": true
 }
