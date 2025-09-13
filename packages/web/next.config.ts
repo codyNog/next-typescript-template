@@ -14,6 +14,7 @@ const nextConfig: NextConfig = {
   compiler: {
     styledComponents: false,
   },
+  outputFileTracingRoot: "../../",
   // Enable if static export is needed
   // output: "export",
 };

@@ -16,7 +16,8 @@
     "plop": "plop",
     "postplop": "biome format --write .",
     "update": "npm-check-updates -u",
-    "watch:i18n": "node ../../i18n/watcher.js"
+    "watch:i18n": "node ../../i18n/watcher.js",
+    "typegen": "next typegen"
   },
   "dependencies": {
     "@conform-to/react": "^1.3.0",

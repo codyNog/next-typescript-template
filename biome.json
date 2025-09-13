@@ -47,7 +47,7 @@
       "semicolons": "always",
       "trailingCommas": "all"
     },
-    "globals": ["test", "expect", "describe"]
+    "globals": ["test", "expect", "describe", "PageProps", "LayoutProps"]
   },
   "json": {
     "formatter": {
